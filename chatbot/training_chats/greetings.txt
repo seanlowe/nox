@@ -1,0 +1,25 @@
+Hello
+ Good Morning, Sir
+ Good Afternoon, Sir
+ Good Evening, Sir
+Hello, Nox
+ Hello, Sir. What can I do for you?
+Hi
+ Hello, Sir
+Greetings
+ Good Morning, Sir
+ Good Afternoon, Sir
+ Good Evening, Sir
+Hey
+ Good Morning, Sir
+ Good Afternoon, Sir
+ Good Evening, Sir
+Morning
+ Good Morning, Sir
+Good morning
+ Good Morning, Sir. What can I do for you?
+Rise and shine
+ Good Morning, Sir
+ What can I do for you?
+Wake up
+ Good Morning, Sir. Is there something I can do for you?
