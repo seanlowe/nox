@@ -1,0 +1,34 @@
+{
+  "name": "nox",
+  "version": "0.0.1",
+  "description": "nox",
+  "main": "./lib/nox.js",
+  "bin": {
+    "nox": "./lib/nox.js"
+  },
+  "scripts": {
+    "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts",
+    "create": "npm run build && npm run test",
+    "build": "tsc -p .",
+    "local": "sudo npm i -g && nox",
+    "test": "echo 'hello world test'",
+    "refresh": "rm -rf ./node_modules ./package-lock.json && npm install"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.1",
+    "clear": "^0.1.0",
+    "commander": "^7.2.0",
+    "figlet": "^1.5.0",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "@types/clear": "^0.1.1",
+    "@types/figlet": "^1.5.1",
+    "@types/node": "^15.12.4",
+    "nodemon": "^2.0.7",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.4"
+  }
+}
