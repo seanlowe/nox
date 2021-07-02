@@ -14,12 +14,23 @@ async function askForInput() {
 
 function analyseInput(input: string) {
     let msg = input.toLowerCase();
-    if (msg === 'exit' || msg === 'quit' || 
-        msg === 'stop' || msg === 'bye' ||
-        msg === 'shutdown') {
-            console.log("Goodbye!")
-            process.exit();
+    if (checkExit(msg)) {
+        process.exit();
     } else {
         console.log("you entered: [" + input + "]");
+        keywordCheck(msg);
     }
+}
+
+function checkExit(input: string) {
+    if (input === 'exit' || input === 'quit' || 
+        input === 'stop' || input === 'bye' ||
+        input === 'shutdown') {
+            console.log("Goodbye!")
+            return true
+    }
+}
+
+function keywordCheck(input: string) {
+    // implement function
 }

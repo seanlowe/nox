@@ -57,13 +57,18 @@ function askForInput() {
 }
 function analyseInput(input) {
     var msg = input.toLowerCase();
-    if (msg === 'exit' || msg === 'quit' ||
-        msg === 'stop' || msg === 'bye' ||
-        msg === 'shutdown') {
-        console.log("Goodbye!");
+    if (checkExit(msg)) {
         process.exit();
     }
     else {
         console.log("you entered: [" + input + "]");
+    }
+}
+function checkExit(input) {
+    if (input === 'exit' || input === 'quit' ||
+        input === 'stop' || input === 'bye' ||
+        input === 'shutdown') {
+        console.log("Goodbye!");
+        return true;
     }
 }
