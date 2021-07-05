@@ -3,11 +3,12 @@
 import chalk = require('chalk');
 import clear = require('clear');
 import figlet = require('figlet');
-// import path = require('path');
 import program = require('commander');
+// import path = require('path');
 
-import greeter = require('./greeter/greet');
-import purpose = require('./purpose/purpose');
+import greeter = require('./modules/greet');
+import weather = require('./modules/weather');
+import purpose = require('./modules/purpose');
 
 // -------------
 
@@ -29,7 +30,8 @@ const options = program.opts();
 
 if (Object.keys(options).length === 0) {
     greeter.greetUser();
-    purpose.determineUseCase();
+    // purpose.determineUseCase();
+
 } else {
     console.log("I'm not going to do anything with these options");
 }
