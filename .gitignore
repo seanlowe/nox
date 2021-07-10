@@ -2,3 +2,4 @@ typescript/node_modules/
 typescript/lib/
 .DS_Store
 ideas.md
+.env
