@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+import jsdom = require("jsdom");
+
 export function sms(msg: string, number: string) {
-    // can we send SMS / emails through SMTP like in python?
+    // gmail api with oauth
 }

@@ -1,6 +1,6 @@
 {
   "name": "nox",
-  "version": "0.0.4.6.1",
+  "version": "0.0.7.13",
   "description": "nox",
   "main": "./lib/nox.js",
   "bin": {
@@ -31,9 +31,7 @@
     "@types/figlet": "^1.5.1",
     "@types/jsdom": "^16.2.13",
     "@types/node": "^15.12.4",
-    "dotenv": "^10.0.0",
     "nodemon": "^2.0.7",
-    "ts-loader": "^9.2.3",
     "ts-node": "^10.0.0",
     "typescript": "^4.3.5"
   }
