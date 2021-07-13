@@ -3,3 +3,4 @@ typescript/lib/
 .DS_Store
 ideas.md
 env.ts
+typescript/package-lock.json

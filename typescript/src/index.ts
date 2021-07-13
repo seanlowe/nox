@@ -4,17 +4,21 @@ import program = require('commander');
 
 // custom module imports
 import greeter = require('./modules/greet');
-import weather = require('./modules/weather');
+import netgear = require('./modules/network');
 import purpose = require('./modules/purpose');
+import weather = require('./modules/weather');
 import wiki = require('./modules/wiki');
+
+// utility functions
 import {terminal} from './modules/utility';
 
 program
-    .version('0.0.7.12')
+    .version('0.0.8')
     .description("SSLv2's attempt at a basic version of JARVIS")
+    .option('-n, --network', 'Boot into tinker mode (remove banner and cls command)')
     .option('-s, --search <string>', 'Search for something')
-    .option('-w, --weather', 'Query the weather API')
     .option('-t, --tinker', 'Boot into tinker mode (remove banner and cls command)')
+    .option('-w, --weather', 'Query the weather API')
 program.parse(process.argv);
 
 const options = program.opts();
@@ -27,6 +31,9 @@ if (keys.length !== 0) {
     }
     // convert to loop over arguments?
     // remove arguments as they are hit?
+    if (keys.includes('network')) {
+        netgear.test();
+    }
     if (keys.includes('search')) {
         wiki.search(options['search']);
     }
