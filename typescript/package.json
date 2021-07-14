@@ -1,6 +1,6 @@
 {
   "name": "nox",
-  "version": "0.0.8.5",
+  "version": "0.0.8.6",
   "description": "nox",
   "main": "./lib/nox.js",
   "bin": {

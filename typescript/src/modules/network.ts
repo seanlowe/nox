@@ -9,12 +9,10 @@ export async function test() {
 
     try {
         const options = { password: env.NETGEAR_PASS };
-			await router.login(options);
-			const systemInfo = await router.getInfo();
-            console.log(systemInfo);
+        await router.login(options);
+        const devices = await router.getAttachedDevices();
 
-            // WOL not working but other netgear functions are
-            // await router.wol(env.SEAN_TOWER_MAC, "00:00:00:00:00:00");
+        console.log(devices);
 	} catch (error) {
 		console.log(error);
 	}
