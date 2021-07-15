@@ -38,7 +38,7 @@ if (keys.length !== 0) {
         wiki.search(options['search']);
     }
     if (keys.includes('weather')) {
-        weather.weatherReport();
+        weather.dailyWeatherReport();
     }
     // purpose.determineUseCase();
 } else {

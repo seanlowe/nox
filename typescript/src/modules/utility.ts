@@ -44,3 +44,7 @@ export function truncateDecimals(number: number, digits: number) {
 
     return truncatedNum / multiplier;
 };
+
+export function convertFromEpoch(time: number, offset: number) {
+    return new Date((time+offset) * 1000);
+}
