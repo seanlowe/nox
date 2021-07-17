@@ -68,8 +68,6 @@ export async function dailyWeatherReport() {
             if (counter >= 25) break;
         }
 
-        // make a new index in hourly array based off converted
-        // epoch time of that entry in response
         hourly[counter] = {
             hour: date.getUTCHours(),
             temp: entry.temp,
