@@ -24,13 +24,13 @@ program.parse(process.argv);
 const options = program.opts();
 
 let keys = Object.keys(options);
+
+// todo: refactor commandline argument parsing
 if (keys.length !== 0) {
     if (!keys.includes('tinker')) {
         greeter.greetUser();
         terminal();
     }
-    // convert to loop over arguments?
-    // remove arguments as they are hit?
     if (keys.includes('network')) {
         netgear.test();
     }

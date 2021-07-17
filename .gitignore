@@ -1,6 +1,10 @@
-typescript/node_modules/
+# typescript
+typescript/package-lock.json
 typescript/lib/
+typescript/node_modules/
+typescript/src/modules/wip
+
+# other
 .DS_Store
 ideas.md
 env.ts
-typescript/package-lock.json
