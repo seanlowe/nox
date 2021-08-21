@@ -15,9 +15,9 @@ import cal = require('./modules/wip/calendar');
 import {terminal} from './modules/utility';
 
 program
-    .version('0.0.9.8')
+    .version('0.0.10.1')
     .description("SSLv2's attempt at a basic version of JARVIS")
-    .option('-n, --network', 'Boot into tinker mode (remove banner and cls command)')
+    .option('-n, --network', 'test network module')
     .option('-s, --search <string>', 'Search for something')
     .option('-t, --tinker', 'Boot into tinker mode (remove banner and cls command)')
     .option('-w, --weather', 'Query the weather API')
@@ -42,8 +42,7 @@ if (keys.length !== 0) {
     if (keys.includes('weather')) {
         weather.dailyWeatherReport();
     }
-    // purpose.determineUseCase();
 } else {
-    // console.log("No options supplied!");
-    cal.calendar();
+    // cal.calendar();
+    purpose.determineUseCase();
 }
