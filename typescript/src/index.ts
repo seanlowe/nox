@@ -9,11 +9,13 @@ import purpose = require('./modules/purpose');
 import weather = require('./modules/weather');
 import wiki = require('./modules/wiki');
 
+import cal = require('./modules/wip/calendar');
+
 // utility functions
 import {terminal} from './modules/utility';
 
 program
-    .version('0.0.8')
+    .version('0.0.9.8')
     .description("SSLv2's attempt at a basic version of JARVIS")
     .option('-n, --network', 'Boot into tinker mode (remove banner and cls command)')
     .option('-s, --search <string>', 'Search for something')
@@ -42,5 +44,6 @@ if (keys.length !== 0) {
     }
     // purpose.determineUseCase();
 } else {
-    console.log("No options supplied!");
+    // console.log("No options supplied!");
+    cal.calendar();
 }
