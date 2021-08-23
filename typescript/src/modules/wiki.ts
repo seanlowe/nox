@@ -2,6 +2,7 @@
 
 import axios, {AxiosResponse} from 'axios';
 import jsdom = require("jsdom");
+import { isNumeric, displayArrayWithIndexes, isValidIndex } from './utility';
 
 
 const baseUrl = "https://en.wikipedia.org/"
@@ -15,19 +16,40 @@ export async function search(input: string) {
     selectResult(response);
 }
 
-function selectResult(response: AxiosResponse) {
+async function selectResult(response: AxiosResponse) {
     const pages = response.data.query.pages;
-    let options = [];
+    let options: any = [];
     for (let result in pages) {
         options.push(sanitize(pages[result].title))
     }
 
-    // TODO: add more logic to determine which possible option to show
-    showResult(options[0]);
+    console.log("\nPlease pick from the following: ")
+    displayArrayWithIndexes(options)
+
+    const stdin = process.openStdin();
+    let choice = null
+    stdin.addListener("data", d => {
+        // we display the options starting from 1, so remove one
+        let input = d.toString().trim() - 1
+        if (isNumeric(input) && isValidIndex(input, options.length)) {
+            showResult(options[input])
+        }
+        
+        // TODO: figure out way to map non-numerical input
+        // REASON: results from wikipedia are not consistent, 
+        // all are connected by _ but are not consistently 
+        // all lower or all upper, or all first letter upper
+        // non case sensitive contains / indexOf would solve this
+    });
+
+
+    console.log("outside of stdin.addListener with options", options)
+    // options.empty()
 }
 
 
 async function showResult(selectedResult: string) {
+    console.log(`inside showResult with ${selectedResult}`)
     const page = await axios.get(baseUrl + "wiki/" + selectedResult);
     const { JSDOM } = jsdom;
 

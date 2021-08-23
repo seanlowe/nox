@@ -3,12 +3,11 @@
 import bridge from './bridge'
 
 export function determineUseCase() {
+    displayHelp()
     askForInput();
 }
 
 async function askForInput() {
-    console.log("Start your query with one word to direct you to the right module:")
-    console.log(" >      ['wiki', 'weather', 'network', 'help']")
     const stdin = process.openStdin();
     stdin.addListener("data", d => {
         let input = d.toString().trim()
@@ -34,11 +33,15 @@ function checkExit(input: string) {
 function keywordCheck(input: string) {
     let newInput = input.split(' ')[0]
     let query = input.replace(newInput, '')
-    if (newInput === "help") displayHelp()
+    if (newInput === "help") displayHelp(true)
     else bridge(newInput, query)
 }
 
-function displayHelp() {
-    console.log("Start your query with one word to direct you to the right module:")
-    console.log(" >      ['wiki', 'weather', 'network', 'help']")
+function displayHelp(secondRun: boolean = false) {
+    if (secondRun) {
+        console.log("\nStart your query with one word to direct you to the right module:")
+    } else {
+        console.log("Start your query with one word to direct you to the right module:")
+    }
+    console.log(" ['wiki', 'weather', 'network', 'help', 'exit']")
 }
