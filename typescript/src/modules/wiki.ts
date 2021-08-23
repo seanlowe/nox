@@ -26,13 +26,19 @@ async function selectResult(response: AxiosResponse) {
     console.log("\nPlease pick from the following: ")
     displayArrayWithIndexes(options)
 
+    await chooseResult(options)
+
+    console.log("outside of stdin.addListener with options", options)
+    // options.length = 0 // clear array without creating a new reference to array
+}
+
+async function chooseResult(options: []) {
     const stdin = process.openStdin();
-    let choice = null
-    stdin.addListener("data", d => {
+    stdin.addListener("data", async d => {
         // we display the options starting from 1, so remove one
         let input = d.toString().trim() - 1
         if (isNumeric(input) && isValidIndex(input, options.length)) {
-            showResult(options[input])
+            await showResult(options[input])
         }
         
         // TODO: figure out way to map non-numerical input
@@ -41,10 +47,8 @@ async function selectResult(response: AxiosResponse) {
         // all lower or all upper, or all first letter upper
         // non case sensitive contains / indexOf would solve this
     });
-
-
-    console.log("outside of stdin.addListener with options", options)
-    // options.empty()
+    
+    stdin.end()
 }
 
 
