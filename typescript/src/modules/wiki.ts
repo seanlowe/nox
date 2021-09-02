@@ -2,7 +2,7 @@
 
 import axios, {AxiosResponse} from 'axios';
 import jsdom = require("jsdom");
-import { isNumeric, displayArrayWithIndexes, isValidIndex } from './utility';
+import { isNumeric, displayArrayWithIndexes, isValidIndex, sanitize } from './utility';
 
 
 const baseUrl = "https://en.wikipedia.org/"
@@ -65,8 +65,4 @@ async function showResult(selectedResult: string) {
     let data = doc.querySelector(selector)?.textContent;
 
     console.log(data);
-}
-
-function sanitize(input: string, toBeReplaced: string = ' ', substitute: string = '_') {
-    return input.split(toBeReplaced).join(substitute);
 }
