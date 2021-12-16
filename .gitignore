@@ -5,7 +5,9 @@ typescript/node_modules/
 typescript/src/modules/wip
 typescript/assets/events.txt
 
+# python
+python/.gitignore
+
 # other
 .DS_Store
-ideas.md
 env.ts
