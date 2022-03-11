@@ -23,7 +23,7 @@ const Layout = ({ children, home }) => {
         <Header name={name} icon={statusIconPath} />
         <Nav home={home} />
       </header>
-      <main>{children}</main>
+        {children}
     </div>
   )
 }

@@ -23,7 +23,7 @@ ul li {
 
 ul li a {
     position: relative;
-    display: block;
+    display: grid;
     width: 60px;
     height: 60px;
     text-align: center;
@@ -33,6 +33,9 @@ ul li a {
     font-size: 30px;
     color: $text-default;
     transition: .25s;
+    justify-content: center;
+    align-content: center;
+    text-decoration: none;
 }
 
 ul li a:before {

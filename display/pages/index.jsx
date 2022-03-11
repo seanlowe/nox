@@ -7,9 +7,7 @@ export default function Home() {
         <Head>
             <title>{siteTitle}</title>
         </Head>
-        <body>
-            <p> we got nothing in here </p>
-        </body>
+        <p> we got nothing in here </p>
     </Layout>
   )
 }
