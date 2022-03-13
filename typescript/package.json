@@ -2,6 +2,7 @@
   "name": "nox",
   "version": "0.0.10.1",
   "description": "nox",
+  "private": "true",
   "main": "./lib/nox.js",
   "bin": {
     "nox": "./lib/nox.js"

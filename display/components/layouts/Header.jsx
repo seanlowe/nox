@@ -1,12 +1,12 @@
 import Image from 'next/image'
 import PropTypes from 'prop-types'
 
-const Header = ({name}) => {
+const Header = ({name, icon: statusIndicator}) => {
     return (
         <div className='horizon'>
             <Image
                 priority
-                src='/images/status_blue.png'
+                src={statusIndicator}
                 className='borderCircle'
                 height={100}
                 width={175}

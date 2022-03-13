@@ -11,22 +11,24 @@ const Nav = ({home}) => {
             <div className='container'>
                 <ul className="nav-dropdown">
                     {!isOpen && 
-                        <li>
-                            <a><i id="hamburger" className='fa fa-bars' onClick={() => setIsOpen(true)}></i></a>
+                        <li onClick={() => setIsOpen(true)}>
+                            <a><i id="hamburger" className='fa fa-bars'></i></a>
                         </li>
                     }
                     {isOpen &&
                         <>
-                            <li>
-                                {!home &&
+                            {!home &&
+                                <li>
                                     <Link href='/'>
                                         <a><i className='fa fa-home'></i></a>
                                     </Link>
-                                }
-                                {home &&
-                                    <a><i className='fa fa-arrow-left' onClick={() => setIsOpen(false)}></i></a>
-                                }
-                            </li>
+                                </li>
+                            }
+                            {home &&
+                                <li onClick={() => setIsOpen(false)}>
+                                    <a><i className='fa fa-arrow-left'></i></a>
+                                </li>
+                            }
                             <li>
                                 <Link href='/settings'>
                                     <a><i className='fa fa-gear'></i></a>

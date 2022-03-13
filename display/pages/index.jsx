@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Layout, { siteTitle } from '../components/layout'
+import StatusModal from '../components/StatusModal'
 
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
         <Head>
             <title>{siteTitle}</title>
         </Head>
-        <p> we got nothing in here </p>
+        <StatusModal />
     </Layout>
   )
 }
