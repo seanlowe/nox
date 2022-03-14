@@ -6,8 +6,11 @@ const StatusModal = () => {
     const {state, dispatch} = useContext(StatusContext)
 
     return (
-        <Card variant="outlined">
+        <Card>
             <CardMedia
+                sx={{
+                    bgcolor: 'black;'
+                }}
                 component="img"
                 height="300"
                 image={state.indicator}
