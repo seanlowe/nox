@@ -1,12 +1,16 @@
+import {useContext} from 'react'
 import Image from 'next/image'
 import PropTypes from 'prop-types'
+import StatusContext from '../../utilities/StatusContext'
 
-const Header = ({name, icon: statusIndicator}) => {
+const Header = ({name}) => {
+    const {state} = useContext(StatusContext)
+
     return (
         <div className='horizon'>
             <Image
                 priority
-                src={statusIndicator}
+                src={state.indicator}
                 className='borderCircle'
                 height={100}
                 width={175}
