@@ -1,0 +1,94 @@
+.MuiPaper-root {
+    background-color: $background-grey;
+}
+
+.main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 300px;
+    padding: 1rem;
+    background-color: $foreground-grey;
+    color: $header-text;
+    border-radius: 20px;
+}
+
+.search {
+    outline: none;
+    border-radius: 10px;
+    border: none;
+    margin-bottom: 5%;
+    background-color: $field-grey;
+    color: $header-text;
+    line-height: 1.5rem;
+}
+
+.city {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+}
+
+.description {
+    text-transform: capitalize;
+    letter-spacing: 0.05em;
+    color: $header-text;
+}
+
+.date-time {
+    text-align: center;
+    margin-top: 0.5rem;
+}
+
+.city-temp {
+    font-size: 40px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: $header-text;
+    text-align: center;
+}
+
+.city-temp sup {
+    font-size: 25px;
+}
+
+.city sup {
+    font-size: 0.5em;
+}
+
+.city-name {
+    font-size: 2em;
+    margin-bottom: 0;
+}
+
+.city-name sup {
+    padding: 0.2em 0.6em;
+    margin-left: 0.2em;
+    border-radius: 30px;
+}
+
+.city-icon {
+    margin-top: 10px;
+    width: 100px;
+    height: 100px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+    .search {
+        padding: 20px 15%;
+    }
+
+    .city {
+        padding: 40px 20%;
+    }
+}
+  

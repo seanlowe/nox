@@ -11,22 +11,23 @@ const Layout = ({ children, home }) => {
   const {state} = useContext(StatusContext)
 
   return (
+    <>
+      <Head>
+        <link rel='icon' href={state.indicator} />
+        <meta name='og:title' content={siteTitle} />
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
+      </Head>
+      <head>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'/>
+      </head>
       <div className='container'>
-        <Head>
-          <link rel='icon' href={state.indicator} />
-          <meta name='og:title' content={siteTitle} />
-          <meta name="viewport" content="initial-scale=1, width=device-width" />
-        </Head>
-        <head>
-          <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'/>
-        </head>
-        <header className='header'>
+        <div className='header'>
           <Header name={name} />
           <Nav home={home} />
-        </header>
-          {children}
+        </div>
+        {children}
       </div>
-
+    </>
   )
 }
 

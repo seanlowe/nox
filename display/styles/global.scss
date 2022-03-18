@@ -4,6 +4,8 @@
 }
 
 $background-grey: #1f1e1e;
+$foreground-grey: #333333;
+$field-grey: #3C3C3C;
 $text-default: #666;
 $header-text: #AAAAAA;
 $blue-glow: #283cff;
@@ -49,3 +51,4 @@ body {
 @import './nav.scss';
 @import './settings.scss';
 @import './slider.scss';
+@import './weather.scss';

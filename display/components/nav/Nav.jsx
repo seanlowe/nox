@@ -35,7 +35,7 @@ const Nav = ({home}) => {
                                 </Link>
                             </li>
                             <li>
-                                <Link href='#'>
+                                <Link href='/muuri'>
                                     <a><i className='fa fa-inbox'></i></a>
                                 </Link>
                             </li>

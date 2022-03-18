@@ -4,11 +4,13 @@ import StatusModal from '../components/StatusModal'
 
 export default function Home() {
   return (
-    <Layout home>
-        <Head>
-            <title>{siteTitle}</title>
-        </Head>
-        <StatusModal />
-    </Layout>
+    <>
+      <Head>
+          <title>{siteTitle}</title>
+      </Head>
+      <Layout home>
+          <StatusModal />
+      </Layout>
+    </>
   )
 }

@@ -1,16 +1,21 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
-import ImageSlider from '../components/ImageSlider'
-import { ImageSlides } from '../components/data/ImageSlides'
+// import ImageSlider from '../components/ImageSlider'
+// import { ImageSlides } from '../components/data/ImageSlides'
+import { WorkerSlides } from '../components/data/WorkerSlides'
+import WorkerSlider from '../components/WorkerSlider'
 
 const SettingsPage = () => {
     return (
-        <Layout>
+        <>
             <Head>
                 <title>Settings</title>
             </Head>
-            <ImageSlider slides={ImageSlides} />
-        </Layout>
+            <Layout>
+                {/* <ImageSlider slides={ImageSlides} /> */}
+                <WorkerSlider slides={WorkerSlides} />
+            </Layout>
+        </>
     )
 }
 

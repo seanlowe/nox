@@ -1,5 +1,5 @@
-import {Weather} from '../workers/Weather'
-import {WikiSearch} from '../workers/WikiSearch'
+import Weather from '../workers/Weather'
+import WikiSearch from '../workers/WikiSearch'
 
 export const WorkerSlides = [
     {
