@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const WEATHER_URL = 'https://api.openweathermap.org/data/2.5/weather'
 const GEO_URL = 'https://api.openweathermap.org/geo/1.0/direct'
-const OPEN_WEATHER_API_KEY = 'e1b21e77bd59ae4515cf19ea5bd36cc2'
+const OPEN_WEATHER_API_KEY = process.env.OPEN_WEATHER_API_KEY
 
 const getIPAddress = async () => {
     const address = await axios.get("https://api.ipify.org/")
