@@ -23,6 +23,8 @@ const getLatLonCoords = async (address) => {
 }
 
 const geocode = async (query) => {
+    // @TODO: eventually support returning multiple locations and populating
+    // those locations in a dropdown select
     const response = await axios.get(GEO_URL, {
         params: {
             q: query,

@@ -1,15 +1,16 @@
 import { useState, useEffect } from 'react'
-import { Card } from '@mui/material'
+import { Card, CircularProgress } from '@mui/material'
 import { fetchWeather } from '../../services/WeatherService'
 
 const Weather = () => {
 	const [query, setQuery] = useState('')
 	const [weather, setWeather] = useState({})
-	const [isLoaded, setIsLoaded] = useState(false)
+	const [isLoading, setIsLoading] = useState(true)
+	const [isFetching, setIsFetching] = useState(false)
 	
 	useEffect( async () => {
 		await fetchWeather(query).then(response => setWeather(response))
-		setIsLoaded(true)
+		setIsLoading(false)
 	}, [])
 
 	const d = new Date()
@@ -25,29 +26,45 @@ const Weather = () => {
 	})
 
 	const search = async (e) => {
-        if (e.key === 'Enter') {
+		if (e.key === 'Enter') {
+			setIsFetching(true)
             const data = await fetchWeather(query);
 
             setWeather(data);
             setQuery('');
+			setIsFetching(false)
         }
     }
 
 	const imageSrc = (icon) => `https://openweathermap.org/img/wn/${icon}@2x.png`
 
+	const renderSearchIcon = () => {
+		if (isFetching) {
+			return <CircularProgress className="icon-scale" onClick={() => search({key: 'Enter'})} />
+		}
+
+		return <i className='fa fa-search' onClick={() => search({key: 'Enter'})} />
+	}
+
 	return (
 		<>
-			{isLoaded && (
+			{isLoading && <CircularProgress />}
+			{!isLoading && (
 				<Card sx={{bgcolor: '#1f1e1e'}}>
 					<div className='main-container'>
-						<input
-							type='text'
-							className='search'
-							placeholder=' &nbsp;Search for a city...'
-							value={query}
-							onChange={(e) => setQuery(e.target.value)}
-							onKeyPress={search}
-						/>
+						<div className='search-bar'>
+							<input
+								type='text'
+								className='search'
+								placeholder='Search for a city...'
+								value={query}
+								onChange={(e) => setQuery(e.target.value)}
+								onKeyPress={search}
+							/>
+							<div className='search-icon'>
+								{renderSearchIcon()}
+							</div>
+						</div>
 						{weather.main && (
 							<div className='city'>
 								<h2 className='city-name'>

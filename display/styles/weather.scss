@@ -14,14 +14,38 @@
     border-radius: 20px;
 }
 
+.search-bar {
+    display: inline-flex;
+    align-items: center;
+
+    .search-icon {
+        height: 20px;
+        width: 20px;
+        position: relative;
+        left: -22px;
+        cursor: pointer;
+    }
+}
+
+.MuiCircularProgress-root {
+    position: relative;
+    bottom: 10px;
+    left: -15px;
+}
+
+.icon-scale {
+    transform: scale(0.5, 0.5) !important;
+}
+
 .search {
     outline: none;
     border-radius: 10px;
     border: none;
-    margin-bottom: 5%;
     background-color: $field-grey;
     color: $header-text;
     line-height: 1.5rem;
+    padding-left: 10px;
+    padding-right: 30px;
 }
 
 .city {
