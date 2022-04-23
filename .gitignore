@@ -10,3 +10,4 @@ python/.gitignore
 # other
 .DS_Store
 env.ts
+.vscode

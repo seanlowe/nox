@@ -1,16 +1,12 @@
-import Head from 'next/head'
-import Layout, { siteTitle } from '../components/layout'
+import Layout from '../components/layout'
 import StatusModal from '../components/StatusModal'
+import StatusOverall from '../components/StatusOverall'
 
 export default function Home() {
   return (
-    <>
-      <Head>
-          <title>{siteTitle}</title>
-      </Head>
-      <Layout home>
-          <StatusModal />
-      </Layout>
-    </>
+    <Layout home>
+        <StatusModal />
+        <StatusOverall />
+    </Layout>
   )
 }

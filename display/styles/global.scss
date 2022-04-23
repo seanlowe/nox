@@ -16,39 +16,16 @@ body {
 	color: $text-default;
 }
 
-.horizon {
-	color: $header-text;
-	background-color: transparent;
-	display: flex;
-	align-items: center;
-	width: 100%;
-	overflow: visible;
-	visibility: visible;
-	justify-content: space-around;
-}
-
 .secondary {
   position: fixed;
   justify-content: unset;
 }
 
-#content {
-	font-family: Riviera, sans-serif;
-	background-color: transparent;
-	min-height: 50px;
-	visibility: visible
-}
-
-.headline {
-	font-weight: bold;
-	font-size: 3em;
-	letter-spacing: 1em;
-	margin-right: 1.5rem;
-}
-
+@import './banner.scss';
 @import './layouts.scss';
-@import './utils.scss';
 @import './nav.scss';
 @import './settings.scss';
 @import './slider.scss';
+@import './status.scss';
+@import './utils.scss';
 @import './weather.scss';

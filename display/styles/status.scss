@@ -1,0 +1,22 @@
+.status-box {
+    background-color: grey;
+    border-radius: 20px;
+    padding: 0 20px;
+    width: 65%;
+    color: #C3C3C6;
+    align-content: center;
+}
+
+.key-value-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.labels {
+    text-align: right;
+}
+
+.values {
+    align-items: right;
+}

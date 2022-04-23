@@ -1,6 +1,6 @@
 import {useContext} from 'react'
 import Head from 'next/head'
-import Header from './layouts/Header'
+import Banner from './layouts/Banner'
 import Nav from './nav/Nav'
 import StatusContext from '../utilities/StatusContext'
 
@@ -13,19 +13,19 @@ const Layout = ({ children, home }) => {
   return (
     <>
       <Head>
+        <title>{siteTitle}</title>
         <link rel='icon' href={state.indicator} />
         <meta name='og:title' content={siteTitle} />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
-      <head>
-        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'/>
-      </head>
       <div className='container'>
         <div className='header'>
-          <Header name={name} />
+          <Banner name={name} />
           <Nav home={home} />
         </div>
-        {children}
+        <div className='content'>          
+          {children}
+        </div>
       </div>
     </>
   )

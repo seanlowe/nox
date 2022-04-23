@@ -3,7 +3,7 @@ import Image from 'next/image'
 import PropTypes from 'prop-types'
 import StatusContext from '../../utilities/StatusContext'
 
-const Header = ({name}) => {
+const Banner = ({name}) => {
     const {state} = useContext(StatusContext)
 
     return (
@@ -16,7 +16,7 @@ const Header = ({name}) => {
                 width={175}
                 alt={name}
             />
-            <div id='content'>
+            <div className='banner-content'>
                 <center>
                     <span className='headline'>{name}</span>
                 </center>
@@ -25,8 +25,8 @@ const Header = ({name}) => {
     )
 }
 
-Header.propTypes = {
+Banner.propTypes = {
     name: PropTypes.string,
 }
 
-export default Header
+export default Banner

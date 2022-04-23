@@ -1,0 +1,24 @@
+.headline {
+	font-weight: bold;
+	font-size: 3em;
+	letter-spacing: 1em;
+	margin-right: 1.5rem;
+}
+
+.horizon {
+	color: $header-text;
+	background-color: transparent;
+	display: flex;
+	align-items: center;
+	width: 100%;
+	overflow: visible;
+	visibility: visible;
+	justify-content: space-around;
+}
+
+.banner-content {
+	font-family: Riviera, sans-serif;
+	background-color: transparent;
+	min-height: 50px;
+	visibility: visible
+}

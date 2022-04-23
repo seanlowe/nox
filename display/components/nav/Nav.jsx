@@ -1,6 +1,9 @@
 import {useState} from 'react'
 import Link from 'next/link'
 import PropTypes from 'prop-types'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAddressCard, faArrowLeft, faBars, faCloud, faGear, faHome, faInbox } from '@fortawesome/free-solid-svg-icons'
+
 
 const Nav = ({home}) => {
     // todo: dynamic nav dropdown list?
@@ -12,41 +15,40 @@ const Nav = ({home}) => {
                 <ul className="nav-dropdown">
                     {!isOpen && 
                         <li onClick={() => setIsOpen(true)}>
-                            <a><i id="hamburger" className='fa fa-bars'></i></a>
+                            <a><FontAwesomeIcon icon={faBars} /></a>
                         </li>
                     }
                     {isOpen &&
                         <>
-                            {!home &&
+                            {home ? (
+                                <li onClick={() => setIsOpen(false)}>
+                                    <a><FontAwesomeIcon icon={faArrowLeft} /></a>
+                                </li>
+                            ) : (
                                 <li>
                                     <Link href='/'>
-                                        <a><i className='fa fa-home'></i></a>
+                                        <a><FontAwesomeIcon icon={faHome} /></a>
                                     </Link>
                                 </li>
-                            }
-                            {home &&
-                                <li onClick={() => setIsOpen(false)}>
-                                    <a><i className='fa fa-arrow-left'></i></a>
-                                </li>
-                            }
+                            )}
                             <li>
                                 <Link href='/settings'>
-                                    <a><i className='fa fa-gear'></i></a>
+                                    <a><FontAwesomeIcon icon={faGear} /></a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href='/muuri'>
-                                    <a><i className='fa fa-inbox'></i></a>
+                                    <a><FontAwesomeIcon icon={faInbox} /></a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href='#'>
-                                    <a><i className='fa fa-address-card'></i></a>
+                                    <a><FontAwesomeIcon icon={faAddressCard} /></a>
                                 </Link>
                             </li>
                             <li>
                                 <Link href='#'>
-                                    <a><i className='fa fa-cloud'></i></a>
+                                    <a><FontAwesomeIcon icon={faCloud} /></a>
                                 </Link>
                             </li>
                         </>
