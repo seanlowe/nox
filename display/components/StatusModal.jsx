@@ -1,49 +1,39 @@
 import React, {useContext} from 'react'
-import { Card, CardMedia, CardActions, Typography, Button, CardContent} from '@mui/material'
+import { Card, Grid, Box } from '@mui/material'
 import StatusContext from '../utilities/StatusContext'
 
 const StatusModal = () => {
     const {state, dispatch} = useContext(StatusContext)
 
     return (
-        <Card>
-            <CardMedia
-                sx={{
-                    bgcolor: 'black;'
-                }}
-                component="img"
-                height="300"
-                image={state.indicator}
-                alt="green iguana"
-            />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                Lizard
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                Lizards are a widespread group of squamate reptiles, with over 6,000
-                species, ranging across all continents except Antarctica
-                </Typography>
-            </CardContent>
-            <CardActions>
-                <Button
-                    size="small"
-                    onClick={() => {
-                        dispatch({type: 'setOnline'})}
-                    }
-                >
-                    set online
-                </Button>
-                <Button
-                    size="small"
-                    onClick={() => {
-                        dispatch({type: 'setOffline'})}
-                    }
-                >
-                    set offline
-                </Button>
-            </CardActions>
-        </Card>
+        <Box className='status-box'>
+            <Grid container columnSpacing={5}>
+                <Grid item xs={6}>
+                    <div className='key-value-container'>
+                        <div className='labels'>
+                            <p> Status (nox): </p>
+                            <p> Status (HASS): </p>
+                        </div>
+                        <div className='values'>
+                            <p> <img src={state.indicator} width={25} height={15} /> {state.status} </p>
+                            <p> TDB </p>
+                        </div>
+                    </div>
+                </Grid>
+                <Grid item xs={6}>
+                    <div className='key-value-container'>
+                        <div className='labels'>
+                            <p> label: </p>
+                            <p> label: </p>
+                        </div>
+                        <div className='values'>
+                            <p> value 1 </p>
+                            <p> value 2 </p>
+                        </div>
+                    </div>
+                </Grid>
+            </Grid>
+        </Box>
     )
 }
 
