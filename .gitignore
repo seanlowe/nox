@@ -15,9 +15,6 @@
 # production
 /build
 
-# misc
-.DS_Store
-
 # debug
 npm-debug.log*
 yarn-debug.log*
@@ -43,3 +40,4 @@ archive/python/.gitignore
 .DS_Store
 env.ts
 .vscode
+.prettierignore
