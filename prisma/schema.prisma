@@ -9,3 +9,9 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Meal {
+  id Int @id @default(autoincrement())
+  name String
+  lastMade DateTime
+}

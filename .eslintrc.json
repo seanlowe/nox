@@ -1,29 +1,40 @@
 {
-    "env": {
-        "browser": true,
-        "es6": true
-    },
-    "extends": "prettier",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 2018,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "prettier"
-    ],
-    "rules": {
-        "curly": ["error", "all"],
-        "dot-notation": "error",
-        "eqeqeq": ["error", "smart"],
-        "prefer-const": "error",
-        "prettier/prettier": "error",
-        "no-nested-ternary": "error",
-        "no-sequences": ["error", { "allowInParentheses": false }],
-        "no-unneeded-ternary": "error",
-        "no-var": "error"
-    }
+	"env": {
+		"browser": true,
+		"es6": true
+	},
+	"extends": "prettier",
+	"parserOptions": {
+		"ecmaFeatures": {
+				"jsx": true
+		},
+		"ecmaVersion": 2018,
+		"sourceType": "module"
+	},
+	"plugins": [
+		"react"
+	],
+	"rules": {
+		"arrow-spacing": "error",
+		"arrow-parens": "error",
+		"arrow-body-style": ["error", "always"],
+		"array-bracket-spacing": ["error", "always"],
+		"block-spacing": ["error", "always"],
+		"curly": ["error", "all"],
+		"dot-notation": "error",
+		"eqeqeq": ["error", "smart"],
+		"indent": ["error", "tab"],
+		"jsx-quotes": ["error", "single"],
+		"max-len": ["warn", 100],
+		"no-nested-ternary": "error",
+		"no-sequences": ["error", { "allowInParentheses": false }],
+		"no-unneeded-ternary": "error",
+		"no-var": "error",
+		"object-curly-spacing": ["error", "always"],
+		"prefer-arrow-callback": "error",
+		"prefer-const": "error",
+		"quotes": ["error", "single"],
+		"semi": ["error", "never"],
+		"space-in-parens": ["error", "always"]
+	}
 }
