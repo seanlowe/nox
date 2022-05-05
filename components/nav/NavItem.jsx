@@ -1,8 +1,8 @@
 import Link from 'next/link'
 import PropTypes from 'prop-types'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-const NavItem = ({path, icon}) => {
+const NavItem = ({ path, icon }) => {
 	return (
 		<Link href={path}>
 			<a>

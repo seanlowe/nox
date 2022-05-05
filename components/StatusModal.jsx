@@ -1,35 +1,36 @@
-import React, {useContext} from 'react'
-import {Card, Grid, Box} from '@mui/material'
+import React, { useContext } from 'react'
+import { Grid, Box } from '@mui/material'
 import StatusContext from '../utilities/StatusContext'
+import { useHomeAssistant } from '../utilities/useHomeAssistant'
 
 const StatusModal = () => {
-	const {state, dispatch} = useContext(StatusContext)
+	const { state } = useContext( StatusContext )
+	const haStatus = useHomeAssistant()
 
 	return (
-		<Box className="status-box">
+		<Box className='status-box'>
 			<Grid container columnSpacing={5}>
 				<Grid item xs={6}>
-					<div className="key-value-container">
-						<div className="labels">
+					<div className='key-value-container'>
+						<div className='labels'>
 							<p> Status (nox): </p>
 							<p> Status (HASS): </p>
 						</div>
-						<div className="values">
+						<div className='values'>
 							<p>
-								{' '}
-								<img src={state.indicator} width={25} height={15} /> {state.status}{' '}
+								<img src={state.indicator} width={25} height={15} /> {state.status}
 							</p>
-							<p> TDB </p>
+							<p> {haStatus} </p>
 						</div>
 					</div>
 				</Grid>
 				<Grid item xs={6}>
-					<div className="key-value-container">
-						<div className="labels">
+					<div className='key-value-container'>
+						<div className='labels'>
 							<p> label: </p>
 							<p> label: </p>
 						</div>
-						<div className="values">
+						<div className='values'>
 							<p> value 1 </p>
 							<p> value 2 </p>
 						</div>

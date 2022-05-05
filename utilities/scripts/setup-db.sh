@@ -1,9 +1,9 @@
 #!/bin/bash
 
-SERVER='nox'
-DB='nox_data'
-PW='password'
-USER='postgres'
+SERVER=$1
+DB=$2
+PW=$3
+USER=$4
 
 # if $SERVER exists, stop, remove and rebuild
 CONTAINER=$(docker container ls -a --format '{{.Names}} -- {{.Status}}' | grep $SERVER)

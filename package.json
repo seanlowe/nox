@@ -1,12 +1,14 @@
 {
   "name": "nox",
-  "version": "0.5",
+  "version": "0.5.0",
   "description": "A Next.js project",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "db:build": "node ./utilities/scripts/call-db-setup.js",
+    "db:view": "npx prisma studio"
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
@@ -26,6 +28,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "sass": "^1.49.9",
+    "shelljs": "^0.8.5",
     "web-animations-js": "^2.3.2"
   },
   "devDependencies": {

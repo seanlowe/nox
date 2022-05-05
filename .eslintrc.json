@@ -3,7 +3,6 @@
 		"browser": true,
 		"es6": true
 	},
-	"extends": "prettier",
 	"parserOptions": {
 		"ecmaFeatures": {
 				"jsx": true
@@ -15,26 +14,27 @@
 		"react"
 	],
 	"rules": {
-		"arrow-spacing": "error",
-		"arrow-parens": "error",
+		"arrow-parens": ["error", "always"],
+		"arrow-spacing": ["error", { "before": true, "after": true }],
 		"arrow-body-style": ["error", "always"],
 		"array-bracket-spacing": ["error", "always"],
 		"block-spacing": ["error", "always"],
+		"brace-style": ["error", { "allowSingleLine": true }],
 		"curly": ["error", "all"],
 		"dot-notation": "error",
 		"eqeqeq": ["error", "smart"],
 		"indent": ["error", "tab"],
-		"jsx-quotes": ["error", "single"],
-		"max-len": ["warn", 100],
+		"jsx-quotes": ["error", "prefer-single"],
+		"max-len": ["warn", {"code": 100, "tabWidth": 2}],
 		"no-nested-ternary": "error",
 		"no-sequences": ["error", { "allowInParentheses": false }],
 		"no-unneeded-ternary": "error",
 		"no-var": "error",
 		"object-curly-spacing": ["error", "always"],
 		"prefer-arrow-callback": "error",
-		"prefer-const": "error",
-		"quotes": ["error", "single"],
+		"prefer-const": ["error", { "destructuring": "all" }],
+		"quotes": ["error", "single", { "avoidEscape": true }],
 		"semi": ["error", "never"],
-		"space-in-parens": ["error", "always"]
+		"space-in-parens": ["error", "always", { "exceptions": ["{}", "()"] }]
 	}
 }
