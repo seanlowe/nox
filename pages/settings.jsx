@@ -1,9 +1,7 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
-// import ImageSlider from '../components/ImageSlider'
-// import { ImageSlides } from '../components/data/ImageSlides'
-import { WorkerSlides } from '../components/data/WorkerSlides'
-import WorkerSlider from '../components/WorkerSlider'
+import { WorkerSlides } from '../components/data/slides'
+import Slider from '../components/modules/Slider'
 
 const SettingsPage = () => {
 	return (
@@ -12,8 +10,7 @@ const SettingsPage = () => {
 				<title>Settings</title>
 			</Head>
 			<Layout>
-				{/* <ImageSlider slides={ImageSlides} /> */}
-				<WorkerSlider slides={WorkerSlides} />
+				<Slider slides={WorkerSlides} />
 			</Layout>
 		</>
 	)

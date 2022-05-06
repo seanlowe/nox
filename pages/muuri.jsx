@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import Layout from '../components/layout'
 import { MuuriComponent } from 'muuri-react'
-import Weather from '../components/workers/Weather'
-import WikiSearch from '../components/workers/WikiSearch'
-import StatusModal from '../components/StatusModal'
+import Weather from '../components/modules/Weather'
+import WikiSearch from '../components/modules/WikiSearch'
+import StatusModal from '../components/modules/StatusModal'
 
 const MuuriPage = () => {
 	return (

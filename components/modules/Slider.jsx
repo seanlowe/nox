@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { WorkerSlides } from './data/WorkerSlides'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 
-const WorkerSlider = ({ slides }) => {
+const Slider = ({ slides }) => {
 	const [ current, setCurrent ] = useState( 0 )
 	const length = slides.length
 
@@ -19,17 +20,17 @@ const WorkerSlider = ({ slides }) => {
 
 	return (
 		<div className='slider-container'>
-			<i id='left-arrow' className='fa fa-arrow-left' onClick={prevSlide} />
-			{WorkerSlides.map(( slide, index ) => { 
+			<FontAwesomeIcon id='left-arrow' icon={faArrowLeft} onClick={prevSlide} />
+			{slides.map(( slide, index ) => { 
 				return (
 					<div className={`slide ${index === current ? 'active' : ''}`} key={index}>
-						{index === current && <div>{slide.worker}</div>}
+						{index === current && <div> { slide.item } </div>}
 					</div>
 				)
 			})}
-			<i id='right-arrow' className='fa fa-arrow-right' onClick={nextSlide} />
+			<FontAwesomeIcon id='right-arrow' icon={faArrowRight} onClick={nextSlide} />
 		</div>
 	)
 }
 
-export default WorkerSlider
+export default Slider

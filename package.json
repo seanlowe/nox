@@ -35,5 +35,14 @@
     "eslint": "^8.14.0",
     "eslint-plugin-react": "^7.29.4",
     "prisma": "^3.13.0"
-  }
+  },
+  "engines": {
+    "node": ">= 14.0.0",
+    "npm": ">= 6.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ]
 }
