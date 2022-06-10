@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "db:build": "node ./utilities/scripts/call-db-setup.js",
-    "db:view": "npx prisma studio"
+    "db:view": "npx prisma studio",
+    "db:migrate": "npx prisma migrate dev"
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
