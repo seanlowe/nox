@@ -26,12 +26,36 @@
 # Nox
 My attempt at a low-level version of JARVIS. Just something to tinker on in my free time using tools I find online, languages I had an idea in or something I wanted to learn better.
 
-To serve the site locally, run:
+To serve the site, for the *first* time, locally, run:
 ```bash
+$ npm run db:new
 $ npm run dev
 ```
 
 It will be served at localhost:3000/
+
+To run it any time afterwards, run:
+```bash
+$ npm run db:start
+$ npm run dev
+```
+
+<br />
+
+## Prisma
+
+This project uses Prisma to control database structure. After making any change to the [schema.prisma](/prisma/schema.prisma) file, run:
+```bash
+$ npm run db:migrate
+$ npm run db:generate
+```
+This updates the database with changes you've made to the schema, then generates a new Prisma Client for use in the project.
+
+To view your DB in the browser, run:
+```bash
+$ npm run db:view
+```
+It will open at localhost:5555/
 
 <br />
 
@@ -44,4 +68,4 @@ The [Python](/archive/python/) version had a few interesting modules and multipl
 <hr />
 <br />
 
-Built on [Next.js](https://nextjs.org/).
+Built on [Next.js](https://nextjs.org/) with [Prisma](https://www.prisma.io/).
