@@ -1,7 +1,7 @@
 import { useContext } from 'react'
 import Image from 'next/image'
 import PropTypes from 'prop-types'
-import StatusContext from '../../utilities/StatusContext'
+import StatusContext from '../../utilities/contexts/StatusContext'
 
 const Banner = ({ name }) => {
 	const { state } = useContext( StatusContext )

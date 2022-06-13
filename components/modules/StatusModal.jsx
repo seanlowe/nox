@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Grid, Box } from '@mui/material'
-import StatusContext from '../../utilities/StatusContext'
-import { useHomeAssistant } from '../../utilities/useHomeAssistant'
+import StatusContext from '../../utilities/contexts/StatusContext'
+import { useHomeAssistant } from '../../utilities/hooks/useHomeAssistant'
 
 const StatusModal = () => {
 	const { state } = useContext( StatusContext )

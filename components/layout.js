@@ -2,7 +2,7 @@ import { useContext } from 'react'
 import Head from 'next/head'
 import Banner from './layouts/Banner'
 import Nav from './nav/Nav'
-import StatusContext from '../utilities/StatusContext'
+import StatusContext from '../utilities/contexts/StatusContext'
 
 const name = 'nox'
 export const siteTitle = 'nox Dashboard'
