@@ -12,13 +12,13 @@ import axios from 'axios'
 //  ------------------------
 
 const Freyr = () => {
-  const renderLunch = () => {
+  const renderLunchs = () => {
     // <p> Lunch: </p>
     // <br />
     return null
   }
 
-  const renderDinner = () => {
+  const renderDinners = () => {
     const dinner = '' // make API call to get random Meal from DB
     return (
       <p> Dinner: {} </p>
@@ -38,17 +38,18 @@ const Freyr = () => {
   }
 
   const today = new Date().toLocaleString( 'en-us', {  weekday: 'long' })
+  console.log( today )
 
   return (
-    <Card>
-      <CardHeader>{today}</CardHeader>
+    <Card variant='outlined' >
+      <CardHeader title='Meals For The Week' />
       <CardContent>
         <Grid container columnSpacing={5}>
           <Grid item xs={6}>
             <div className='key-value-container'>
               <div className='labels'>
-                {renderLunch()}
-                {renderDinner()}
+                {renderLunchs()}
+                {renderDinners()}
                 <button onClick={handleClick}>
 									click me
                 </button>
