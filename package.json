@@ -7,8 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "db:new": "node ./utilities/scripts/call-db-setup.js",
-    "db:start": "node ./utilities/scripts/call-db-start.js",
+    "db:new": "node ./utilities/scripts/setup-new-db.js",
+    "db:start": "node ./utilities/scripts/start-db.js",
     "db:view": "npx prisma studio",
     "db:migrate": "npx prisma migrate dev",
     "db:generate":"npx prisma generate"
