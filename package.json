@@ -4,14 +4,17 @@
   "description": "A Next.js project",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev:next": "next dev",
+    "dev:new": "npm run db:new && npm run db:migrate && npm run db:generate && next dev",
+    "dev": "npm run db:start && npx prisma db push && next dev",
     "build": "next build",
     "start": "next start",
-    "db:new": "node ./utilities/scripts/setup-new-db.js",
-    "db:start": "node ./utilities/scripts/start-db.js",
-    "db:view": "npx prisma studio",
+    "db:generate":"npx prisma generate",
     "db:migrate": "npx prisma migrate dev",
-    "db:generate":"npx prisma generate"
+    "db:new": "node ./utilities/scripts/setup-new-db.js",
+    "db:seed": "npx prisma db seed",
+    "db:start": "node ./utilities/scripts/start-db.js",
+    "db:view": "npx prisma studio"
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
@@ -36,6 +39,9 @@
     "eslint": "^8.14.0",
     "eslint-plugin-react": "^7.29.4",
     "prisma": "^3.13.0"
+  },
+  "prisma": {
+    "seed": "node ./prisma/seed.js"
   },
   "engines": {
     "node": ">= 14.0.0",

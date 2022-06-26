@@ -2,7 +2,9 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 const handleGet = async ( req, res ) => {
-  return res.status( 200 ).json({})
+  const meals = await prisma.meal.findMany()
+
+  return res.status( 200 ).json({ meals })
 }
 
 const store = async ( req, res ) => {
@@ -22,7 +24,7 @@ const store = async ( req, res ) => {
     data: newMeal,
   })
   
-  return 'hello'
+  return meal
 }
 
 

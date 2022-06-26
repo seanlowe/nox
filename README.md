@@ -28,16 +28,23 @@ My attempt at a low-level version of JARVIS. Just something to tinker on in my f
 
 To serve the site, for the *first* time, locally, run:
 ```bash
-$ npm run db:new
-$ npm run dev
+$ npm run dev:new
+# this runs several commands:
+# - db:new, which creates a new database
+# - db:migrate, which runs any database migrations and automatically runs the seeder
+# - db:generate, which generates the Prisma Client for use in nox
+# - next dev, which starts the Next.js dev server
 ```
 
-It will be served at localhost:3000/
+It will be served at `localhost:3000/`
 
 To run it any time afterwards, run:
 ```bash
-$ npm run db:start
 $ npm run dev
+# this will:
+# - start the existing database
+# - make sure the database is up to date,
+# - then start the Next.js dev server
 ```
 
 <br />
@@ -55,7 +62,7 @@ To view your DB in the browser, run:
 ```bash
 $ npm run db:view
 ```
-It will open at localhost:5555/
+It will open at `localhost:5555/`
 
 <br />
 
