@@ -1,29 +1,20 @@
-import { Card, CardContent, CardHeader, Grid } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { Card, CardContent, CardHeader, Grid, CircularProgress } from '@mui/material'
+import { createMealWeek } from './FreyrActions'
 import axios from 'axios'
-
-// create little cards with the Day, time and meals on them
-//  ________________________
-// /          MONDAY        \
-// |                        |
-// | Lunch:     <>          |
-// | Dinner:    <>          |
-// |                        |
-// \                        /
-//  ------------------------
+import MealCard from './MealCard'
 
 const Freyr = () => {
-  const renderLunchs = () => {
-    // <p> Lunch: </p>
-    // <br />
-    return null
+  const [ week, setWeek ] = useState( [] )
+
+  const setupWeekMeals = async () => {
+    const meals = await createMealWeek()
+    setWeek( meals )
   }
 
-  const renderDinners = () => {
-    const dinner = '' // make API call to get random Meal from DB
-    return (
-      <p> Dinner: {} </p>
-    )
-  }
+  useEffect(() => {
+    setupWeekMeals()
+  }, [] )
 
   const handleClick = async () => {
     const item = {
@@ -37,29 +28,41 @@ const Freyr = () => {
     console.log( res )
   }
 
-  const today = new Date().toLocaleString( 'en-us', {  weekday: 'long' })
-  console.log( today )
+  const renderCards = () => {
+    if ( week.length < 1 ) {
+      return null 
+    }
+
+    return (
+      <MealCard day={week[0].day} lunch={null} dinner={week[0].dinner} />
+    )
+  }
 
   return (
-    <Card variant='outlined' >
-      <CardHeader title='Meals For The Week' />
-      <CardContent>
-        <Grid container columnSpacing={5}>
-          <Grid item xs={6}>
-            <div className='key-value-container'>
-              <div className='labels'>
-                {renderLunchs()}
-                {renderDinners()}
-                <button onClick={handleClick}>
-									click me
-                </button>
-              </div>
-            </div>
-          </Grid>
-        </Grid>
-      </CardContent>
-    </Card>
+    <>
+      {renderCards()}
+    </>
   )
+  // return (
+  //   <Card variant='outlined' >
+  //     <CardHeader title='Meals For The Week' />
+  //     <CardContent>
+  //       <Grid container columnSpacing={5}>
+  //         <Grid item xs={6}>
+  //           <div className='key-value-container'>
+  //             <div className='labels'>
+  //               {renderLunches()}
+  //               {renderDinners()}
+  //               <button onClick={handleClick}>
+  // 								click me
+  //               </button>
+  //             </div>
+  //           </div>
+  //         </Grid>
+  //       </Grid>
+  //     </CardContent>
+  //   </Card>
+  // )
 }
 
 export default Freyr

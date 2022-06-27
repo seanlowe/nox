@@ -2,7 +2,13 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 
 const handleGet = async ( req, res ) => {
-  const meals = await prisma.meal.findMany()
+  const { query } = req
+
+  const meals = await prisma.meal.findMany({
+    where: {
+      ...query
+    },
+  })
 
   return res.status( 200 ).json({ meals })
 }
