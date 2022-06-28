@@ -1,0 +1,20 @@
+.meal-card {
+  height: 150px;
+  width: 225px;
+  margin: 5px;
+}
+
+.day-title {
+  text-align: center;
+  border-bottom: 1px solid black;
+  text-transform: uppercase;
+}
+
+.section-dinner {
+  text-align: center;
+  .dinner-name {
+    margin-bottom: -5px;
+    font-size: x-large;
+    font-weight: lighter;
+  }
+}

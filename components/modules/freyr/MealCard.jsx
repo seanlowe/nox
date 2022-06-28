@@ -1,27 +1,15 @@
 import { PropTypes } from 'prop-types'
-import { Card, CardContent, CardHeader, Grid } from '@mui/material'
+import { Card, CardContent, CardHeader } from '@mui/material'
 
 const MealCard = ({ day, lunch, dinner }) => {
   return (
-    <Card variant='outlined' >
-      <CardHeader title={day} />
+    <Card variant='outlined' className='meal-card'>
+      <CardHeader title={day} className='day-title'/>
       <CardContent>
-        <Grid container columnSpacing={5}>
-          <Grid item xs={6}>
-            <div className='key-value-container'>
-              <div className='labels'>
-                {/* <div className='section-lunch'>
-                  <p> {lunch.name} </p>
-                  <p> Lunch </p>
-                </div> */}
-                <div className='section-dinner'>
-                  <h4> {dinner.name} </h4>
-                  <p> Dinner </p>
-                </div>
-              </div>
-            </div>
-          </Grid>
-        </Grid>
+        <div className='section-dinner'>
+          <div className='dinner-name'> {dinner.name} </div>
+          <sub> Dinner </sub>
+        </div>
       </CardContent>
     </Card>
   )

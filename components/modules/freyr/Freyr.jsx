@@ -28,41 +28,16 @@ const Freyr = () => {
     console.log( res )
   }
 
-  const renderCards = () => {
-    if ( week.length < 1 ) {
-      return null 
-    }
-
-    return (
-      <MealCard day={week[0].day} lunch={null} dinner={week[0].dinner} />
-    )
-  }
-
   return (
     <>
-      {renderCards()}
+      {!week && <CircularProgress />}
+      {week && week.map(( weekday ) => {
+        return (
+          <MealCard day={weekday.day} lunch={null} dinner={weekday.dinner} />
+        )
+      })}
     </>
   )
-  // return (
-  //   <Card variant='outlined' >
-  //     <CardHeader title='Meals For The Week' />
-  //     <CardContent>
-  //       <Grid container columnSpacing={5}>
-  //         <Grid item xs={6}>
-  //           <div className='key-value-container'>
-  //             <div className='labels'>
-  //               {renderLunches()}
-  //               {renderDinners()}
-  //               <button onClick={handleClick}>
-  // 								click me
-  //               </button>
-  //             </div>
-  //           </div>
-  //         </Grid>
-  //       </Grid>
-  //     </CardContent>
-  //   </Card>
-  // )
 }
 
 export default Freyr
