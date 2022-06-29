@@ -1,7 +1,12 @@
 .meal-card {
   height: 150px;
-  width: 225px;
+  min-width: 225px;
+  max-width: 225px;
   margin: 5px;
+
+  &.today {
+    background-color: blue;
+  }
 }
 
 .day-title {
@@ -17,4 +22,10 @@
     font-size: x-large;
     font-weight: lighter;
   }
+}
+
+.meal-container {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80vw;
 }

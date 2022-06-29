@@ -31,11 +31,15 @@ const Freyr = () => {
   return (
     <>
       {!week && <CircularProgress />}
-      {week && week.map(( weekday ) => {
-        return (
-          <MealCard day={weekday.day} lunch={null} dinner={weekday.dinner} />
-        )
-      })}
+      {week && (
+        <div className='meal-container'>
+          {week.map(( weekday ) => {
+            return (
+              <MealCard day={weekday.day} lunch={null} dinner={weekday.dinner} />
+            )
+          })}
+        </div>
+      )}
     </>
   )
 }

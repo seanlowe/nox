@@ -1,9 +1,13 @@
 import { PropTypes } from 'prop-types'
 import { Card, CardContent, CardHeader } from '@mui/material'
+import { daysOfTheWeek } from './FreyrActions'
 
 const MealCard = ({ day, lunch, dinner }) => {
+  const today = daysOfTheWeek[new Date().getDay()]
+  const isToday = day === today
+
   return (
-    <Card variant='outlined' className='meal-card'>
+    <Card variant='outlined' className={`meal-card ${isToday ? 'today' : ''}`}>
       <CardHeader title={day} className='day-title'/>
       <CardContent>
         <div className='section-dinner'>

@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const daysOfTheWeek = [
+export const daysOfTheWeek = [
   'Sunday',
   'Monday',
   'Tuesday',
@@ -21,7 +21,7 @@ export const createMealWeek = async () => {
   // return type: [ {day: Monday, lunch: {}, dinner: {}}, {day: Tuesday}, ... ]
   const week = []
 
-  for ( let i = 0; i < 7; i++ ) {
+  for ( let i = 0; i < daysOfTheWeek.length; i++ ) {
     const day = {
       day: daysOfTheWeek[i],
       lunch: {}, // leave empty for now. Only scheduling dinnertime
