@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react'
 import { Card, CircularProgress } from '@mui/material'
-import { fetchWeather } from '../../../services/WeatherService'
+import { fetchWeather, imageSrc, setUpTime } from '../../../services/WeatherService'
 
 const Weather = () => {
   const [ query, setQuery ] = useState( '' )
   const [ weather, setWeather ] = useState({})
   const [ isLoading, setIsLoading ] = useState( true )
   const [ isFetching, setIsFetching ] = useState( false )
+  const { date, day, month, time, year } = setUpTime()
 
   useEffect( async () => {
     await fetchWeather( query ).then(( response ) => {
@@ -14,18 +15,6 @@ const Weather = () => {
     })
     setIsLoading( false )
   }, [] )
-
-  const d = new Date()
-  const date = d.getDate()
-  const year = d.getFullYear()
-  const month = d.toLocaleString( 'default', { month: 'long' })
-  const day = d.toLocaleString( 'default', { weekday: 'long' })
-
-  const time = d.toLocaleString( [], {
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-  })
 
   const search = async ( e ) => {
     if ( e.key === 'Enter' ) {
@@ -36,10 +25,6 @@ const Weather = () => {
       setQuery( '' )
       setIsFetching( false )
     }
-  }
-
-  const imageSrc = ( icon ) => {
-    return `https://openweathermap.org/img/wn/${icon}@2x.png` 
   }
 
   const renderSearchIcon = () => {
@@ -61,9 +46,9 @@ const Weather = () => {
 
   return (
     <>
-      {isLoading && <CircularProgress />}
-      {!isLoading && (
-        <Card sx={{ bgcolor: '#1f1e1e' }}>
+      <Card sx={{ bgcolor: '#1f1e1e' }}>
+        {isLoading && <CircularProgress />}
+        {!isLoading && (
           <div className='main-container'>
             <div className='search-bar'>
               <input
@@ -104,8 +89,8 @@ const Weather = () => {
               </div>
             )}
           </div>
-        </Card>
-      )}
+        )}
+      </Card>
     </>
   )
 }
