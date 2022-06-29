@@ -2,6 +2,11 @@ import { useReducer } from 'react'
 import StatusContext from '../utilities/contexts/StatusContext'
 import '../styles/global.scss'
 
+// fix fontAwesome icon weirdness with next.js
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+config.autoAddCss = false
+
 const initialState = {
   indicator: '/images/status_red.png',
   status: 'offline',

@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { HASS_STATE } from '../../services/HassService'
 
 export const useHomeAssistant = () => {
-  const [ state, setState ] = useState( 'Loading' )
+  const [ state, setState ] = useState( HASS_STATE.LOADING )
 
   useEffect(() => {
     let interval
