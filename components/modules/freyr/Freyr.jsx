@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Card, CardContent, CardHeader, Grid, CircularProgress } from '@mui/material'
-import { createMealWeek } from './FreyrActions'
+import { CircularProgress } from '@mui/material'
+import { createMealWeek } from '../../../services/FreyrService'
 import axios from 'axios'
 import MealCard from './MealCard'
 

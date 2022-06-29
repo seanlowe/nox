@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types'
 import { Card, CardContent, CardHeader } from '@mui/material'
-import { daysOfTheWeek } from './FreyrActions'
+import { daysOfTheWeek } from '../../../services/FreyrService'
 
 const MealCard = ({ day, lunch, dinner }) => {
   const today = daysOfTheWeek[new Date().getDay()]
