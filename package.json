@@ -9,7 +9,7 @@
     "dev": "npm run db:start && npx prisma db push && next dev",
     "build": "next build",
     "start": "next start",
-    "db:generate":"npx prisma generate",
+    "db:generate": "npx prisma generate",
     "db:migrate": "npx prisma migrate dev",
     "db:new": "node ./utilities/scripts/setup-new-db.js",
     "db:seed": "npx prisma db seed",
@@ -31,6 +31,7 @@
     "prop-types": "^15.8.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
+    "react-responsive": "^9.0.0-beta.10",
     "sass": "^1.49.9",
     "shelljs": "^0.8.5",
     "web-animations-js": "^2.3.2"
