@@ -22,13 +22,14 @@ body {
 }
 
 @import './banner.scss';
-@import './layouts.scss';
-@import './nav.scss';
+@import './layout.scss';
+@import './navV2.scss';
 @import './settings.scss';
 @import './slider.scss';
-@import './status.scss';
 @import './utils.scss';
 
 // module imports
 @import './anemoi.scss';
 @import './freyr.scss';
+@import './moirai.scss';
+@import './statusV2.scss';

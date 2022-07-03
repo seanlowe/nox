@@ -1,4 +1,4 @@
-import Weather from '../modules/Weather'
+import Weather from '../modules/anemoi/Weather'
 import WikiSearch from '../modules/WikiSearch'
 
 export const ImageSlides = [
