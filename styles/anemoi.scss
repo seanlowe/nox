@@ -10,7 +10,7 @@
 	width: 300px;
 	padding: 1rem;
 	background-color: $foreground-grey;
-	color: $header-text;
+	color: $text-default;
 	border-radius: 20px;
 }
 
@@ -42,7 +42,7 @@
 	border-radius: 10px;
 	border: none;
 	background-color: $field-grey;
-	color: $header-text;
+	color: $text-default;
 	line-height: 1.5rem;
 	padding-left: 10px;
 	padding-right: 30px;
@@ -59,7 +59,7 @@
 .description {
 	text-transform: capitalize;
 	letter-spacing: 0.05em;
-	color: $header-text;
+	color: $text-default;
 }
 
 .date-time {
@@ -71,7 +71,7 @@
 	font-size: 40px;
 	font-weight: bold;
 	margin-top: 10px;
-	color: $header-text;
+	color: $text-default;
 	text-align: center;
 }
 

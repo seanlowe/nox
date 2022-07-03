@@ -6,10 +6,11 @@
 $background-grey: #1f1e1e;
 $foreground-grey: #333333;
 $field-grey: #3C3C3C;
-$text-default: #666;
-$header-text: #AAAAAA;
+$text-default: #AAAAAA;
 $blue-glow: #283cff;
 $blue-glow-hover: #5a5eff;
+// $text-default: #666;
+// $header-text: #AAAAAA;
 
 body {
 	background-color: $background-grey;
@@ -24,12 +25,13 @@ body {
 @import './banner.scss';
 @import './layout.scss';
 @import './navV2.scss';
-@import './settings.scss';
 @import './slider.scss';
 @import './utils.scss';
+
+// page specific styling
+@import './settings.scss';
 
 // module imports
 @import './anemoi.scss';
 @import './freyr.scss';
-@import './moirai.scss';
-@import './statusV2.scss';
+@import './moiraiV2.scss';

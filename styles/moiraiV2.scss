@@ -1,3 +1,37 @@
+/*
+ * holdover styling from V1
+ */
+
+.hass-green {
+  color: yellowgreen;
+}
+
+.hass-red {
+  color: red;
+}
+
+.hass-status {
+  position: relative;
+  top: -0.5rem;
+}
+
+.status-box {
+  background-color: $foreground-grey;
+  // color: $text-default;
+  color: $text-default;
+  border-radius: 20px;
+  align-content: center;
+}
+
+.status-title {
+  text-align: center;
+  margin-bottom: -1.5rem;
+}
+
+/*
+ * new V2 styling
+ */
+
 .status-v2-grid-container {
   align-items: center;
   display: flex;

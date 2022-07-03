@@ -10,7 +10,7 @@
 .MuiSpeedDial-fab {
   background: $background-grey;
   background-color: $foreground-grey;
-  color: $header-text;
+  color: $text-default;
   border-radius: 50%;
   transition: .25s;
 }
@@ -30,14 +30,14 @@
 // menu item label
 .MuiSpeedDialAction-staticTooltipLabel {
   background: $foreground-grey;
-  color: $header-text;
+  color: $text-default;
 }
   
 // menu item
 .MuiSpeedDialAction-fab {
   background: $background-grey;
   background-color: $foreground-grey;
-  color: $header-text;
+  color: $text-default;
   border-radius: 50%;
 }
 
