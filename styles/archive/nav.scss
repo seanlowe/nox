@@ -1,0 +1,62 @@
+.nav-sidebar {
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+ul li {
+  list-style: none;
+  margin: 15px 15px;
+}
+
+ul li a {
+  position: relative;
+  display: grid;
+  width: 60px;
+  height: 60px;
+  text-align: center;
+  line-height: 60px;
+  background: $background-grey;
+  border-radius: 50%;
+  font-size: 30px;
+  color: $text-default;
+  transition: .25s;
+  justify-content: center;
+  align-content: center;
+  text-decoration: none;
+}
+
+ul li a:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: $blue-glow;
+  transition: .25s;
+  transform: scale(.9);
+  z-index: -1;
+}
+
+ul li a:hover:before {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px $blue-glow;
+  filter: blur(3px);
+}
+
+ul li a:hover {
+  color: $blue-glow-hover;
+  box-shadow: 0 0 15px $blue-glow;
+  text-shadow: 0 0 15px $blue-glow;
+}
