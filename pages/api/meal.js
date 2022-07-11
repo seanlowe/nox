@@ -1,10 +1,9 @@
-import { PrismaClient } from '@prisma/client'
-const prisma = new PrismaClient()
+import { db } from '../../utilities/scripts/check-db-connection'
 
 const handleGet = async ( req, res ) => {
   const { query } = req
 
-  const meals = await prisma.meal.findMany({
+  const meals = await db.meal.findMany({
     where: {
       ...query
     },
@@ -26,7 +25,7 @@ const store = async ( req, res ) => {
     lastMade: null,
   }
 
-  const meal = await prisma.meal.create({
+  const meal = await db.meal.create({
     data: newMeal,
   })
   

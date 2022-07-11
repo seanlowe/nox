@@ -1,7 +1,6 @@
 #! /usr/local/bin/node
 
-const { PrismaClient } = require( '@prisma/client' )
-const prisma = new PrismaClient()
+import { db } from '../../utilities/scripts/check-db-connection'
 
 const meals = [
   {
@@ -37,7 +36,7 @@ const meals = [
 ]
 
 const mealSeeder = async () => {
-  return prisma.meal.createMany({
+  return db.meal.createMany({
     data: meals,
   })
 }
