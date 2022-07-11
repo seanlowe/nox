@@ -46,7 +46,7 @@ const Weather = () => {
 
   return (
     <>
-      <Card sx={{ bgcolor: '#1f1e1e' }}>
+      <Card>
         {isLoading && <CircularProgress />}
         {!isLoading && (
           <div className='main-container'>

@@ -46,7 +46,7 @@ export const formatHassState = ( state ) => {
 export const formatNoxState = ( state ) => {
   return (
     <>
-      <img src={state.indicator} class='status-nox-indicator' /> {state.status}
+      <img src={state.indicator} className='status-nox-indicator' /> {state.status}
     </>
   )
 }
