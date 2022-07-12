@@ -15,6 +15,7 @@ $blue-glow-hover: #5a5eff;
 body {
 	background-color: $background-grey;
 	color: $text-default;
+	overflow-x: hidden;
 }
 
 .secondary {
@@ -34,5 +35,4 @@ body {
 // module imports
 @import './anemoi.scss';
 @import './moiraiV2.scss';
-@import './freyr.scss';
-@import './freyrV2.scss';
+@import './freyrV3.scss';
