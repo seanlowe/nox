@@ -1,5 +1,5 @@
 import { PropTypes } from 'prop-types'
-import { daysOfTheWeek } from '../../../services/FreyrService'
+import { daysOfTheWeek } from '../../../services/react/FreyrService'
 
 const MealCardV3 = ({ day: weekday }) => {
   const { day, lunch, dinner } = weekday
@@ -17,12 +17,18 @@ const MealCardV3 = ({ day: weekday }) => {
   )
 }
 
-MealCardV3.propTypes = PropTypes.shape({
+const mealType = PropTypes.shape({
+  id: PropTypes.number,
+  name: PropTypes.string,
+  type: PropTypes.string,
+})
+
+MealCardV3.propTypes = {
   day: PropTypes.shape({
     day: PropTypes.string,
-    lunch: PropTypes.shape({}),
-    dinner: PropTypes.shape({}),
+    lunch: mealType,
+    dinner: mealType,
   })
-})
+}
 
 export default MealCardV3

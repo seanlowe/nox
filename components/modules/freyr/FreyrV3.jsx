@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { Navigation, Pagination, Virtual } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { createMealWeek } from '../../../services/FreyrService'
+import { displayMealWeek } from '../../../services/react/FreyrService'
 import MealCardV3 from './MealCardV3'
 import { Button } from '@mui/material'
 
 const FreyrV3 = () => {
   const [ week, setWeek ] = useState( [] )
   const [ swiperRef, setSwiperRef ] = useState( 0 )
-  const today = new Date().getDay()
+  const [ today, setToday ] = useState( 0 )
 
   const setupWeekMeals = async () => {
-    const meals = await createMealWeek()
+    const meals = await displayMealWeek()
     setWeek( meals )
   }
 
   useEffect(() => {
+    setToday( new Date().getDay())
     setupWeekMeals()
   }, [] )
 

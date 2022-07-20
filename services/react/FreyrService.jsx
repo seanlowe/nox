@@ -35,11 +35,32 @@ const getRandomDinners = async () => {
   return randomDinners
 }
 
-export const createMealWeek = async () => {
-  // return type: [ {day: Monday, lunch: {}, dinner: {}}, {day: Tuesday}, ... ]
-  const week = []
-  const dinnersForTheWeek = await getRandomDinners()
+const storeCurrentWeek = async ( week ) => {
+  const body = {
+    type: 'week',
+    data: JSON.stringify( week )
+  }
 
+  await axios.post( '/api/meal', body )
+
+  return
+}
+
+const checkForWeek = async () => {
+  return await axios.get( '/api/meal?type=week' )
+}
+
+// return type: [ {day: Monday, lunch: {}, dinner: {}}, {day: Tuesday}, ... ]
+export const displayMealWeek = async () => {  
+  // check for current week and return if it exists
+  const { data } = await checkForWeek()
+  const week = Object.values( data )
+
+  if ( week.length ) {
+    return week
+  }
+  
+  const dinnersForTheWeek = await getRandomDinners()
   for ( let i = 0; i < daysOfTheWeek.length; i++ ) {
     const day = {
       day: daysOfTheWeek[i],
@@ -49,5 +70,6 @@ export const createMealWeek = async () => {
     week.push( day )
   }
 
+  storeCurrentWeek( week )
   return week
 }

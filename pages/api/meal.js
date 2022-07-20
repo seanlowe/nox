@@ -1,44 +1,39 @@
-import { db } from '../../utilities/scripts/check-db-connection'
+import * as mealService from '../../services/api/mealService'
 
-const handleGet = async ( req, res ) => {
+const get = async ( req, res ) => {
   const { query } = req
 
-  const meals = await db.meal.findMany({
-    where: {
-      ...query
-    },
-  })
-
-  return res.status( 200 ).json({ meals })
+  switch ( query.type ) {
+  case 'week':
+    return mealService.getWeek( res )
+  case 'Dinner':
+    return await mealService.getMeals( query, res )
+  default:
+    console.log( 'get default case' )
+    return res.status( 404 ).json({ message: 'Malformed Request' })
+  }
 }
 
 const store = async ( req, res ) => {
-  const { body } = req
-  const {
-    name,
-    type,
-  } = body
+  const { body: { type, data } } = req
 
-  const newMeal = {
-    name,
-    type,
-    lastMade: null,
+  switch ( type ) {
+  case 'week':
+    return await mealService.storeWeekToFile( data, res )
+  case 'meal':
+    return await mealService.createNewMeal( data, res )
+  default:
+    console.log( 'post default case' )
+    return res.status( 404 ).json({ message: 'Malformed Request' })
   }
-
-  const meal = await db.meal.create({
-    data: newMeal,
-  })
-  
-  return meal
 }
-
 
 export default async function handler( req, res ) {
   switch ( req.method ) {
   case 'POST':
     return store( req, res )
   case 'GET':
-    return handleGet( req, res )
+    return get( req, res )
   default:
     console.error( 'get fucked' )
     break
