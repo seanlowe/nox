@@ -1,19 +1,23 @@
 import { useState, useEffect } from 'react'
 import { Card, CircularProgress } from '@mui/material'
-import { fetchWeather, imageSrc, setUpTime } from '../../../services/WeatherService'
+import { fetchWeather, imageSrc, setUpTime } from '../../../services/react/WeatherService'
 
 const Weather = () => {
   const [ query, setQuery ] = useState( '' )
   const [ weather, setWeather ] = useState({})
-  const [ isLoading, setIsLoading ] = useState( true )
+  const [ isLoading, setIsLoading ] = useState( false )
   const [ isFetching, setIsFetching ] = useState( false )
   const { date, day, month, time, year } = setUpTime()
 
-  useEffect( async () => {
-    await fetchWeather( query ).then(( response ) => {
-      return setWeather( response ) 
-    })
+  const fetchAndSetWeather = async () => {
+    setIsLoading( true )
+    const response = await fetchWeather( query )
+    setWeather( response )
     setIsLoading( false )
+  }
+
+  useEffect(() => {
+    fetchAndSetWeather()
   }, [] )
 
   const search = async ( e ) => {

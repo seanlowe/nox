@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faEllipsis, faXmark, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faCheck, faXmark, faSpinner } from '@fortawesome/free-solid-svg-icons'
 
 export const HASS_STATE = {
   ONLINE: 'Running',

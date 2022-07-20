@@ -1,5 +1,5 @@
 const shell = require( 'shelljs' )
-const { HASS_STATE } = require( '../../services/HassService' )
+const { HASS_STATE } = require( '../../services/react/HassService' )
 
 const getHassStatus = () => {
   let currentStatus = ''

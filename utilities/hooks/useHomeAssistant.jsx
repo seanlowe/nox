@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { HASS_STATE } from '../../services/HassService'
+import { HASS_STATE } from '../../services/react/HassService'
 
 export const useHomeAssistant = () => {
   const [ state, setState ] = useState( HASS_STATE.LOADING )
@@ -12,7 +12,7 @@ export const useHomeAssistant = () => {
         const { data: response } = await axios.get( '/api/hass' )
         setState( response.hassStatus )
         checkStatus()
-      }, 10000 )
+      }, 15000 )
     }
 
     checkStatus()

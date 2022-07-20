@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Grid, CardHeader, Card, CardContent } from '@mui/material'
 import StatusContext from '../../../utilities/contexts/StatusContext'
 import { useHomeAssistant } from '../../../utilities/hooks/useHomeAssistant'
-import { formatHassState, formatNoxState } from '../../../services/HassService'
+import { formatHassState, formatNoxState } from '../../../services/react/HassService'
 import LabelWithValue from './LabelWithValue'
 
 const StatusModalV2 = () => {
