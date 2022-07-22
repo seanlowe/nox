@@ -18,6 +18,17 @@ const getDinners = async () => {
   return dinners
 }
 
+const isViableEntry = ( meal ) => {
+  const { lastMade } = meal
+  const ago = new Date().setDate( new Date().getDate() - 14 )
+  
+  if ( !lastMade || lastMade > ago ) {
+    return true
+  }
+
+  return false
+}
+
 const getRandomDinners = async () => {
   const randomDinners = []
 
@@ -27,7 +38,7 @@ const getRandomDinners = async () => {
 
   while ( randomDinners.length !== 7 ) {
     const item = records[Math.floor( Math.random() * records.length )]
-    if ( !randomDinners.includes( item )) {
+    if ( !randomDinners.includes( item ) && isViableEntry( item )) {
       randomDinners.push( item )
     }
   }
@@ -35,10 +46,11 @@ const getRandomDinners = async () => {
   return randomDinners
 }
 
-const storeCurrentWeek = async ( week ) => {
+const storeCurrentWeek = async ( week, isNewWeek ) => {
   const body = {
     type: 'week',
-    data: JSON.stringify( week )
+    data: JSON.stringify( week ),
+    isNewWeek
   }
 
   await axios.post( '/api/meal', body )
@@ -51,15 +63,8 @@ const checkForWeek = async () => {
 }
 
 // return type: [ {day: Monday, lunch: {}, dinner: {}}, {day: Tuesday}, ... ]
-export const displayMealWeek = async () => {  
-  // check for current week and return if it exists
-  const { data } = await checkForWeek()
-  const week = Object.values( data )
-
-  if ( week.length ) {
-    return week
-  }
-  
+const createMealWeek = async ( isNewWeek ) => {
+  const week = []
   const dinnersForTheWeek = await getRandomDinners()
   for ( let i = 0; i < daysOfTheWeek.length; i++ ) {
     const day = {
@@ -70,6 +75,23 @@ export const displayMealWeek = async () => {
     week.push( day )
   }
 
-  storeCurrentWeek( week )
+  storeCurrentWeek( week, isNewWeek )
   return week
+}
+
+export const displayMealWeek = async ( isNewWeek = false ) => {
+  if ( isNewWeek ) {
+    return createMealWeek( true )
+  }
+
+  // check for current week and return if it exists
+  const { data } = await checkForWeek()
+  const week = Object.values( data )
+
+  if ( week.length ) {
+    return week
+  }
+  
+  // else, create a new week
+  return createMealWeek()
 }

@@ -15,11 +15,11 @@ const get = async ( req, res ) => {
 }
 
 const store = async ( req, res ) => {
-  const { body: { type, data } } = req
+  const { body: { type, data, isNewWeek } } = req
 
   switch ( type ) {
   case 'week':
-    return await mealService.storeWeekToFile( data, res )
+    return await mealService.storeWeekToFile( data, isNewWeek, res )
   case 'meal':
     return await mealService.createNewMeal( data, res )
   default:
