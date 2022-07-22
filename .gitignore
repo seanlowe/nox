@@ -21,17 +21,12 @@ yarn-debug.log*
 yarn-error.log*
 
 # storage
-/storage/*/*.json
+/storage/logs/*.log
+/storage/freyr/*.json
 
 # local env files
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 .env
 
 # other
 .DS_Store
-env.ts
 .vscode
-.prettierignore

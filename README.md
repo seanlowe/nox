@@ -49,6 +49,19 @@ $ npm run dev
 
 <br />
 
+### Running with PM2 (section needs editing)
+To run nox with a local (*important*: not global) installation of PM2:
+```bash
+# for development
+# this runs npx pm2 start npm --name "next" -- run dev
+$ npm run pm2:dev
+
+# for production
+$ npm run pm2:prod
+```
+
+<br />
+
 ## Prisma
 
 This project uses Prisma to control database structure. After making any change to the [schema.prisma](/prisma/schema.prisma) file, run:
