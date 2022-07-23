@@ -4,6 +4,7 @@ module.exports = {
   apps: [ {
     name: 'nox',
     script: 'npm run dev',
+    log_date_format: 'MM/DD/YYYY HH:mm',
     error_file: './storage/logs/error.log',
     out_file: './storage/logs/info.log',
     watch: true,

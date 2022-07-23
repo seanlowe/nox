@@ -16,10 +16,11 @@
     "db:start": "node ./utilities/scripts/start-db.js",
     "db:view": "npx prisma studio",
     "eco:up": "npx pm2 start ecosystem.config.js",
+    "eco:down": "npx pm2 stop ecosystem.config.js && npx pm2 delete nox",
+    "eco:rebuild": "npm run eco:down && npm run eco:up",
     "eco:restart": "npx pm2 restart ecosystem.config,js",
-    "eco:restart:dev": "npx pm2 restart ecosystem.config,js --env dev",
-    "eco:restart:prod": "npx pm2 restart ecosystem.config,js --env prod",
-    "eco:down": "npx pm2 stop ecosystem.config.js && npx pm2 delete nox"
+    "eco:restart:dev": "npx pm2 restart ecosystem.config.js --env dev",
+    "eco:restart:prod": "npx pm2 restart ecosystem.config.js --env prod"
   },
   "dependencies": {
     "@emotion/react": "^11.8.2",
