@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+const { PrismaClient } = require( '@prisma/client' )
 
 let db
 
@@ -12,4 +12,4 @@ if ( process.env.NODE_ENV === 'production' ) {
   db = global.db
 }
 
-export { db }
+module.exports.db = db

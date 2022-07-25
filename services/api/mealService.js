@@ -1,5 +1,5 @@
 import shell from 'shelljs'
-import { db } from '../../utilities/scripts/check-db-connection'
+import { db } from '../../utilities/scripts/js/check-db-connection'
 
 const FREYR_STORAGE_PATH = './storage/freyr'
 

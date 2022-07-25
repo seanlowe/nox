@@ -1,6 +1,6 @@
 #! /usr/local/bin/node
 
-import { db } from '../../utilities/scripts/check-db-connection'
+const db = require( '../../utilities/scripts/js/check-db-connection' )
 
 const meals = [
   {
