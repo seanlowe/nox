@@ -31,7 +31,7 @@ if ( container ) {
 }
 
 const buildContainer = 'docker run -d -p 5432:5432' + 
-  `-e POSTGRES_USER=${user} -e POSTGRES_PASSWORD=${password} --name ${server} postgres`
+  ` -e POSTGRES_USER=${user} -e POSTGRES_PASSWORD=${password} --name ${server} postgres`
 shell.exec( buildContainer )
 
 console.log( `Waiting to make sure ${server} is running before continuing` )
