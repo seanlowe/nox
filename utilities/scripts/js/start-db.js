@@ -10,29 +10,24 @@ if ( !server ) {
   process.exit()
 }
 
-const container = shell.exec(
-  `docker container ls -a --format '{{.Names}} -- {{.Status}}' | grep ${server}` 
-).trim()
-
-if ( !container ) {
+const status = checkContainerStatus()
+switch ( status ) {
+case 'new':
   console.error( 'No existing container found, please run: `npm run db:new`' )
 
   process.exit()
-}
-
-console.log( 'Existing container found' )
-const isRunning = container.includes( 'Up' )
-
-if ( isRunning ) {
+case 'running':
   console.log( 'Database container already running' )
 
   process.exit()
-}
+case 'exists':
+  console.log( 'Existing container found' )
+default:
+  console.log( `Starting ${server}` )
+  const started = shell.exec( `docker container start ${server} &> /dev/null` ).code
+  if ( started === 0 ) {
+    console.log( `${server} started successfully` )
+  }
 
-console.log( `Starting ${server}` )
-const started = shell.exec( `docker container start ${server} &> /dev/null` ).code
-if ( started === 0 ) {
-  console.log( `${server} started successfully` )
+  process.exit()
 }
-
-process.exit()

@@ -1,26 +1,26 @@
 #! /usr/local/bin/node
 
-const db = require( '../../utilities/scripts/js/check-db-connection' )
+const { db } = require( '../../utilities/scripts/js/check-db-connection' )
 
 const meals = [
   {
     name: 'Cereal',
-    type: 'Breakfast',
+    type: 'Dinner',
     lastMade: null,
   },
   {
     name: 'Toast',
-    type: 'Breakfast',
+    type: 'Dinner',
     lastMade: null,
   },
   {
     name: 'Sandwiches',
-    type: 'Lunch',
+    type: 'Dinner',
     lastMade: null,
   },
   {
     name: 'Grilled Cheese',
-    type: 'Lunch',
+    type: 'Dinner',
     lastMade: null,
   },
   {
@@ -30,6 +30,11 @@ const meals = [
   },
   {
     name: 'Meatloaf',
+    type: 'Dinner',
+    lastMade: null,
+  },
+  {
+    name: 'Orange Chicken',
     type: 'Dinner',
     lastMade: null,
   },

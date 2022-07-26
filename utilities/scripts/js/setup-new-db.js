@@ -2,6 +2,7 @@
 
 require( 'dotenv' ).config()
 const shell = require( 'shelljs' )
+const { checkContainerStatus } = require( './helpers' )
 
 const server = process.env.DB_SERVER
 const database = process.env.DB_NAME
@@ -14,20 +15,20 @@ if ( !server || !database || !password || !user ) {
   process.exit()
 }
 
-const container = shell.exec(
-  `docker container ls -a --format '{{.Names}} -- {{.Status}}' | grep ${server}` 
-).trim()
+const status = checkContainerStatus()
+switch ( status ) {
+case 'new':
+  break
+case 'running':
+  console.log( `Stopping ${server}` )
+  shell.exec( `docker container stop ${server} &> /dev/null` )
 
-if ( container ) {
-  console.log( 'Existing container found' )
-  const isRunning = container.includes( 'Up' )
-  if ( isRunning ) {
-    console.log( `Stopping ${server}` )
-    shell.exec( `docker container stop ${server} &> /dev/null` )
-  }
-
+case 'exists':
+default:
   console.log( `Removing ${server}` )
   shell.exec( `docker container rm ${server} &> /dev/null` )
+
+  break
 }
 
 const buildContainer = 'docker run -d -p 5432:5432' + 
