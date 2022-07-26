@@ -2,6 +2,7 @@
 
 require( 'dotenv' ).config()
 const shell = require( 'shelljs' )
+const { checkContainerStatus } = require( './helpers' )
 
 const server = process.env.DB_SERVER
 if ( !server ) {
