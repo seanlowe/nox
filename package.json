@@ -4,7 +4,7 @@
   "description": "A Next.js project",
   "private": true,
   "scripts": {
-    "predev": "./utilities/scripts/js/pre-dev.js",
+    "predev": "node ./utilities/scripts/js/pre-dev.js",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
