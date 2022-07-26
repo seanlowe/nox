@@ -73,11 +73,6 @@ const Weather = () => {
                   <span>{weather.name}</span>
                   <sup>{weather.sys.country}</sup>
                 </h2>
-                <p className='date-time'>
-                  {day}, {month} {date}, {year}
-                  <br />
-                  {time}
-                </p>
                 <div className='city-temp'>
                   {Math.round( weather.main.temp )}
                   <sup>&deg;F</sup>
