@@ -4,8 +4,7 @@ import PropTypes from 'prop-types'
 import StatusContext from '../../utilities/contexts/StatusContext'
 import { useMediaQuery } from 'react-responsive'
 
-
-const Banner = ({ name }) => {
+const Banner = ({ name = 'nox' }) => {
   const { state } = useContext( StatusContext )
   const isMobile = useMediaQuery({ query: '(max-width: 700px)' })
 

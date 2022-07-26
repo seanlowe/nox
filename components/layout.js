@@ -1,12 +1,15 @@
 import { useContext } from 'react'
+import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import Banner from './layouts/Banner'
 import StatusContext from '../utilities/contexts/StatusContext'
 import NavV2 from './nav/V2/NavV2'
 
+const Banner = dynamic(() => import('./layouts/Banner'), {
+  ssr: false
+})
+
 const Layout = ({ children, home }) => {
   const { state } = useContext( StatusContext )
-  const name = 'nox'
   const siteTitle = 'nox Dashboard'
 
   return (
@@ -19,7 +22,7 @@ const Layout = ({ children, home }) => {
       </Head>
       <div className='container'>
         <div className='header'>
-          <Banner name={name} />
+          <Banner />
           <NavV2 home={home} />
         </div>
         <div className='content'>{children}</div>
