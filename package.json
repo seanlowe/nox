@@ -13,7 +13,7 @@
     "db:new": "node ./utilities/scripts/js/setup-new-db.js",
     "db:seed": "npx prisma db seed",
     "db:start": "node ./utilities/scripts/js/start-db.js",
-    "db:view": "npx prisma studio --browser firefox",
+    "db:view": "npx prisma studio --browser none",
     "eco:up": "npx pm2 start ecosystem.config.js",
     "eco:down": "npx pm2 stop ecosystem.config.js && npx pm2 delete nox",
     "eco:rebuild": "npm run eco:down && npm run eco:up",
