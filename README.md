@@ -41,27 +41,7 @@ $ npm run dev
 
 It will be served at `localhost:3000/`
 
-<br />
-
-### Running with PM2 **(optional)**
-To run nox with a local (*important*: not global) installation of PM2:
-```bash
-$ npm run eco:up
-# this runs `npx pm2 start ecosystem.config.js`
-# which automatically starts the server in dev mode
-
-# to stop the instance
-$ npm run eco:down
-# NOTE: this also deletes the application instance so that multiple instances are not floating around.
-```
-
-Whenever changes are made to the `ecosystem.config.js` file, remember to run
-```bash
-$ npm run eco:rebuild
-# this runs `npm run eco:down && npm run eco:up`
-```
-This will stop and remove the PM2 instance of the application, and then restart it with the updated file.
-Note: If changing the 'name' value of the application, one must remember to change the `eco:down` command in [package.json](/package.json) with the correct name so that it deletes the application instance properly.
+**Note:** Optionally, you can choose to create a persistent instance of nox using PM2. If that's something you'd like to do, see [running with PM2](./docs/running-with-pm2.md).
 
 <br />
 
@@ -78,7 +58,7 @@ To view your DB in the browser, run:
 ```bash
 $ npm run db:view
 ```
-It will open at `localhost:5555/`
+It will be served at `localhost:5555/`
 
 <br />
 
@@ -121,3 +101,5 @@ Built on [Next.js](https://nextjs.org/) with [Prisma](https://www.prisma.io/). R
     <img alt="PM2 logo" src="public/images/pm2.png" width="200">
   </a>
 </div>
+
+<br />
