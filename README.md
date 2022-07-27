@@ -1,22 +1,15 @@
-
-<center style="font-size: 40px; font-weight:bold; letter-spacing: 1.25rem;">
-  NOX
-</center>
-
-<hr />
+<h1 align="center"> <b> NOX </b> </h1>
 
 <img align="right" alt="NOX Logo" src="public/images/nox.png" width="500" />
 <div>
   My attempt at a low-level version of JARVIS.
-  
-  <br />
+  <br></br>
   Mostly something to tinker on in my free time using tools I find online, or languages I had an idea in or something I wanted to learn better.
-
-  <br />
+  <br></br>
   The end goal is to have a singular headless application with a separate web app UI that can control smart home devices, handle geolocation, schedule events, manage choosing a meal schedule for the week and anything else that strikes my fancy.
 </div>
 
-<br />
+<br></br>
 
 ## Installation
 To install:
@@ -43,10 +36,8 @@ It will be served at `localhost:3000/`
 
 **Note:** Optionally, you can choose to create a persistent instance of nox using PM2. If that's something you'd like to do, see [running with PM2](./docs/running-with-pm2.md).
 
-<br />
 
 ## Prisma
-
 This project uses Prisma to control database structure. After making any change to the [schema.prisma](/prisma/schema.prisma) file, run:
 ```bash
 $ npm run db:migrate
@@ -60,21 +51,19 @@ $ npm run db:view
 ```
 It will be served at `localhost:5555/`
 
-<br />
 
 ## Deprecated Versions
 I had many different modules built out in JS/TS but none of them were connected in a way that's feasible for consistent use. As of right now, I'm keeping around a few of the ones which were a little more built out in case I need to reference them again later.
 
-<br />
-<hr />
-<br />
+<hr></hr>
 
 Built on [Next.js](https://nextjs.org/) with [Prisma](https://www.prisma.io/). Runtime management via [PM2](https://pm2.keymetrics.io/).
+<br></br>
 
-
-<br />
-
-
+<!--
+ - these styles will get stripped but leaving them in for when I get around to making
+ - enough documentation to make a decent Github Pages
+-->
 <div style="display: flex; justify-content: space-evenly; align-items: center; flex-wrap: wrap;">
   <!-- nodeJS  -->
   <a href="https://github.com/nodejs" target="blank">
