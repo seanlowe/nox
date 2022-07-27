@@ -43,7 +43,7 @@ It will be served at `localhost:3000/`
 
 <br />
 
-### Running with PM2
+### Running with PM2 **(optional)**
 To run nox with a local (*important*: not global) installation of PM2:
 ```bash
 $ npm run eco:up
