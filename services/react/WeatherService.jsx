@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const WEATHER_URL = process.env.WEATHER_URL
 const GEO_URL = process.env.GEO_URL
-const OPEN_WEATHER_API_KEY = process.env.OPEN_WEATHER_API_KEY
+const WEATHER_API_KEY = process.env.WEATHER_API_KEY
 
 export const imageSrc = ( icon ) => {
   return `https://openweathermap.org/img/wn/${icon}@2x.png` 
@@ -46,7 +46,7 @@ const geocode = async ( query ) => {
     params: {
       q: query,
       limit: 1,
-      appid: OPEN_WEATHER_API_KEY,
+      appid: WEATHER_API_KEY,
     },
   })
 
@@ -75,7 +75,7 @@ export const fetchWeather = async ( query ) => {
       lat: coords[0],
       lon: coords[1],
       units: 'imperial',
-      appid: OPEN_WEATHER_API_KEY,
+      appid: WEATHER_API_KEY,
     },
   })
 
