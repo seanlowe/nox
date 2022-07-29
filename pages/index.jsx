@@ -7,11 +7,10 @@ export default function Home() {
   // feature flag-esque rendering until I figure out the DB table
   // for which modules are enabled
   const WEATHER_ENABLED = process.env.WEATHER_ENABLED === 'true'
-  const HA_ENABLED = process.env.HA_ENABLED === 'true'
 
   return (
     <Layout home>
-      {HA_ENABLED && <StatusModalV2 />}
+      <StatusModalV2 />
       {WEATHER_ENABLED && <Weather />}
       <FreyrV3 />
     </Layout>

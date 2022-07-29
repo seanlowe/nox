@@ -10,6 +10,7 @@ const StatusModalV2 = () => {
   const haState = useHomeAssistant()
   const hassDisplayStatus = formatHassState( haState )
   const noxDisplayStatus = formatNoxState( noxState )
+  const HA_ENABLED = process.env.HA_ENABLED === 'true'
 
   return (
     <Card variant='outlined' className='status-box'>
@@ -17,12 +18,14 @@ const StatusModalV2 = () => {
       <CardContent>
         <Grid container columnSpacing={4} className='status-v2-grid-container'> 
           <LabelWithValue label='nox' name='nox' value={noxDisplayStatus} />
-          <LabelWithValue
-            label='HASS'
-            name='hass'
-            value={hassDisplayStatus}
-            valueStyle='status-v2-hass'
-          />
+          {HA_ENABLED &&  
+            <LabelWithValue
+              label='HASS'
+              name='hass'
+              value={hassDisplayStatus}
+              valueStyle='status-v2-hass'
+            />
+          }
         </Grid>
       </CardContent>
     </Card>
