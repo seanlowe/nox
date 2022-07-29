@@ -1,0 +1,13 @@
+{
+  "events": {
+    "morning": [
+      "0",
+      "one",
+      "dos"
+    ],
+    "evening": [
+      "dinner",
+      "2nd dinner"
+    ]
+  }
+}

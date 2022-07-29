@@ -1,0 +1,7 @@
+// example prisma model
+
+// model Example {
+//   id       Int @id @default(autoincrement())
+//   title    String
+//   written  DateTime
+// }
