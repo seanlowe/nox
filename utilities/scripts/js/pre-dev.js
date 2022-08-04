@@ -5,6 +5,7 @@ const { checkContainerStatus } = require( './helpers' )
 
 const status = checkContainerStatus()
 
+// check status of database container and run appropriate script
 switch ( status ) {
 case 'running':
 case 'exists':
@@ -15,3 +16,6 @@ case 'new':
 default:
   break
 }
+
+// then start the backend service
+shell.exec( './utilities/scripts/sh/micro.sh' )
