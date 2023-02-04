@@ -12,6 +12,12 @@
 <br></br>
 
 ## Installation
+
+Prerequesites:
+* node
+* docker
+
+
 To install:
 ```bash
 $ git clone https://github.com/seanlowe/nox.git
