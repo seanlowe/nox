@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Card, CircularProgress } from '@mui/material'
 import { fetchWeather, imageSrc, setUpTime } from '../../../services/react/WeatherService'
+import axios from 'axios'
 
 const Weather = () => {
   const [ query, setQuery ] = useState( '' )
@@ -11,7 +12,7 @@ const Weather = () => {
 
   const fetchAndSetWeather = async () => {
     setIsLoading( true )
-    const response = await fetchWeather( query )
+    const { data: response } = await axios.get( 'http://localhost:6700/weather' )
     setWeather( response )
     setIsLoading( false )
   }
@@ -21,14 +22,15 @@ const Weather = () => {
   }, [] )
 
   const search = async ( e ) => {
-    if ( e.key === 'Enter' ) {
-      setIsFetching( true )
-      const data = await fetchWeather( query )
+    if ( e.key !== 'Enter' ) return
 
-      setWeather( data )
-      setQuery( '' )
-      setIsFetching( false )
-    }
+    setIsFetching( true )
+    const response = await fetchWeather( query )
+    // const response = await axios.get( 'http://localhost:6700/weather' )
+    setWeather( response )
+
+    setQuery( '' )
+    setIsFetching( false )
   }
 
   const renderSearchIcon = () => {
