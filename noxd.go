@@ -4,6 +4,7 @@ import (
   // "nox/noxd/cmd"
   "nox/noxd/service"
   "net/http"
+  "net/url"
   "fmt"
   "log"
   "os"
@@ -13,7 +14,7 @@ import (
 
 func main() {
   err := godotenv.Load(".env")
-  GO_PORT := os.Getenv("GO_PORT")
+  GO_PORT := os.Getenv("BACKEND_PORT")
 
   // cmd.Execute()
   http.HandleFunc("/hello", hello)
@@ -30,8 +31,10 @@ func hello(w http.ResponseWriter, req *http.Request) {
 }
 
 func weatherFn(w http.ResponseWriter, r *http.Request) {
+  rawQuery := r.URL.RawQuery
+  query, _ := url.QueryUnescape(rawQuery)
   w.Header().Set("Access-Control-Allow-Origin", "*")
-  weather := service.FetchWeather()
+  weather := service.FetchWeather(query)
 
   w.Write([]byte(weather))
 }

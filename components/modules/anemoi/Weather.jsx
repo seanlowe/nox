@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Card, CircularProgress } from '@mui/material'
-import { fetchWeather, imageSrc, setUpTime } from '../../../services/react/WeatherService'
+import { imageSrc } from '../../../services/react/WeatherService'
 import axios from 'axios'
 
 const Weather = () => {
@@ -8,11 +8,12 @@ const Weather = () => {
   const [ weather, setWeather ] = useState({})
   const [ isLoading, setIsLoading ] = useState( false )
   const [ isFetching, setIsFetching ] = useState( false )
-  const { date, day, month, time, year } = setUpTime()
+  const BACKEND_HOST = process.env.BACKEND_HOST
+  const BACKEND_PORT = process.env.BACKEND_PORT
 
   const fetchAndSetWeather = async () => {
     setIsLoading( true )
-    const { data: response } = await axios.get( 'http://localhost:6700/weather' )
+    const { data: response } = await axios.get( `${BACKEND_HOST}:${BACKEND_PORT}/weather` )
     setWeather( response )
     setIsLoading( false )
   }
@@ -25,8 +26,7 @@ const Weather = () => {
     if ( e.key !== 'Enter' ) return
 
     setIsFetching( true )
-    const response = await fetchWeather( query )
-    // const response = await axios.get( 'http://localhost:6700/weather' )
+    const { data: response } = await axios.get( `${BACKEND_HOST}:${BACKEND_PORT}/weather?${query}` )
     setWeather( response )
 
     setQuery( '' )

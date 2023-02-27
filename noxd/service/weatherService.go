@@ -12,14 +12,19 @@ import (
 )
 
 type Coordinates struct {
-  // need to stay capitalized so they are accessible outside the struct
-  Lat float64 `json:lat`
-  Lon float64 `json:lon`
+  Lat float64 `json:"lat"`
+  Lon float64 `json:"lon"`
 }
 
-func buildParams(lat float64, lon float64) (string) {
-  err := godotenv.Load(".env")
-  checkAndHandleError(err, "problem parsing .env")
+type GeocodingResponse struct {
+  Lat float64 `json:"lat"`
+  Lon float64 `json:"lon"`
+  Name string `json:"name"`
+  Country string `json:"country"`
+  State string `json:"state"`
+}
+
+func buildWeatherParams(lat float64, lon float64) (string) {
   WEATHER_URL := os.Getenv("WEATHER_URL")
   WEATHER_API_KEY := os.Getenv("WEATHER_API_KEY")
 
@@ -34,6 +39,20 @@ func buildParams(lat float64, lon float64) (string) {
   return weatherUrl
 }
 
+func buildGeoParams(query string) (string) {
+  GEO_URL := os.Getenv("GEO_URL")
+  WEATHER_API_KEY := os.Getenv("WEATHER_API_KEY")
+
+  params := url.Values{}
+  params.Add("q", query)
+  params.Add("limit", "1")
+  params.Add("appid", WEATHER_API_KEY)
+  rawQuery := params.Encode()
+  geoUrl := fmt.Sprintf("%s?%s", GEO_URL, rawQuery)
+
+  return geoUrl
+}
+
 func checkAndHandleError(err error, msg string) {
   if err != nil {
     fmt.Println(msg)
@@ -41,27 +60,51 @@ func checkAndHandleError(err error, msg string) {
   }
 }
 
-func FetchWeather() (string) {
-  var client = &http.Client{}
-  var c Coordinates
-  
+func handleGeoCode(client *http.Client, query string, c *Coordinates) {
+  geoAddr := buildGeoParams(query)
+  coords, err := helpers.Get(geoAddr, client)
+  checkAndHandleError(err, "no lat/lon coords\n")
+
+  // parse the JSON from the Lat/Lon API call
+  var locations []GeocodingResponse
+  err = json.Unmarshal([]byte(coords), &locations)
+  checkAndHandleError(err, "couldn't parse coords (geocoding)\n")
+
+  c.Lat = locations[0].Lat
+  c.Lon = locations[0].Lon
+}
+
+func handleNoQuery(client *http.Client, c *Coordinates) {
   // get IP address
   addr, err := helpers.Get( "https://api.ipify.org/", client )
-  checkAndHandleError(err, "no ip addr")
-  
+  checkAndHandleError(err, "no ip addr\n")
+
   // use the IP address to get Lat/Lon coordinates
   newAddr := fmt.Sprintf("http://ip-api.com/json/%s", addr)
   coords, err := helpers.Get( newAddr, client )
-  checkAndHandleError(err, "no lat/lon coords")
-  
+  checkAndHandleError(err, "no lat/lon coords\n")
+
   // parse the JSON from the Lat/Lon API call
   err = json.Unmarshal([]byte(coords), &c)
-  checkAndHandleError(err, "couldn't parse coords")
+  checkAndHandleError(err, "couldn't parse coords\n")
+}
+
+func FetchWeather(query string) (string) {
+  err := godotenv.Load(".env")
+  checkAndHandleError(err, "problem parsing .env\n")
+  var client = &http.Client{}
+  var c Coordinates
+  
+  if (query != "") {
+    handleGeoCode(client, query, &c)
+  } else {
+    handleNoQuery(client, &c)
+  }
   
   // build the query and make the request
-  weatherUrl := buildParams(c.Lat, c.Lon)
+  weatherUrl := buildWeatherParams(c.Lat, c.Lon)
   weather, err := helpers.Get( weatherUrl, client )
-  checkAndHandleError(err, "couldn't get weather")
+  checkAndHandleError(err, "couldn't get weather\n")
 
   fmt.Println("succeeded in fetching weather")
   return weather
