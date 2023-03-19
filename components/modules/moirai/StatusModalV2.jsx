@@ -13,12 +13,12 @@ const StatusModalV2 = () => {
   const HA_ENABLED = process.env.HA_ENABLED === 'true'
 
   return (
-    <Card variant='outlined' className='status-box'>
+    <Card variant='outlined' className='card card-status'>
       <CardHeader title='Status V2' className='status-title'/>
       <CardContent>
-        <Grid container columnSpacing={4} className='status-v2-grid-container'> 
+        <Grid container columnSpacing={4} className='status-v2-grid-container'>
           <LabelWithValue label='nox' name='nox' value={noxDisplayStatus} />
-          {HA_ENABLED &&  
+          {HA_ENABLED &&
             <LabelWithValue
               label='HASS'
               name='hass'

@@ -9,8 +9,6 @@ $field-grey: #3C3C3C;
 $text-default: #AAAAAA;
 $blue-glow: #283cff;
 $blue-glow-hover: #5a5eff;
-// $text-default: #666;
-// $header-text: #AAAAAA;
 
 body {
 	background-color: $background-grey;
@@ -31,6 +29,9 @@ body {
 
 // page specific styling
 @import './settings.scss';
+
+// component styling
+@import './components.scss';
 
 // module imports
 @import './anemoi.scss';

@@ -15,7 +15,7 @@
   top: -0.5rem;
 }
 
-.status-box {
+.card-status {
   background-color: $foreground-grey;
   // color: $text-default;
   color: $text-default;
@@ -52,7 +52,7 @@
     text-align: right;
     width: 75px;
   }
-  
+
   div {
     width: auto;
     margin: 0 auto;
@@ -71,4 +71,3 @@
   top: 0.2rem;
   width: 25px;
 }
-

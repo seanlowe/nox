@@ -1,9 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Card, CircularProgress } from '@mui/material'
 import { imageSrc } from '../../../services/react/WeatherService'
+import StatusContext from '../../../utilities/contexts/StatusContext'
+import Offline from '../../layouts/Offline'
 import axios from 'axios'
 
 const Weather = () => {
+  const { state: { status: noxStatus } } = useContext( StatusContext )
+
+  if ( noxStatus === 'offline' ) {
+    console.log( 'nox is offline, cannot retrieve weather' )
+
+    return <Offline message='Cannot retrieve weather data.' />
+  }
+
   const [ query, setQuery ] = useState( '' )
   const [ weather, setWeather ] = useState({})
   const [ isLoading, setIsLoading ] = useState( false )
@@ -23,7 +33,9 @@ const Weather = () => {
   }, [] )
 
   const search = async ( e ) => {
-    if ( e.key !== 'Enter' ) return
+    if ( e.key !== 'Enter' ) {
+      return 
+    }
 
     setIsFetching( true )
     const { data: response } = await axios.get( `${BACKEND_HOST}:${BACKEND_PORT}/weather?${query}` )
@@ -52,9 +64,13 @@ const Weather = () => {
 
   return (
     <>
-      <Card>
-        {isLoading && <CircularProgress />}
-        {!isLoading && (
+      {isLoading && (
+        <Card className='card card-spinner'>
+          <CircularProgress className='weather-spinner'/>
+        </Card>
+      )}
+      {!isLoading && (
+        <Card className='card card-weather'>
           <div className='main-container'>
             <div className='search-bar'>
               <input
@@ -90,8 +106,8 @@ const Weather = () => {
               </div>
             )}
           </div>
-        )}
-      </Card>
+        </Card>
+      )}
     </>
   )
 }

@@ -3,7 +3,7 @@ import { Navigation, Pagination, Virtual } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { displayMealWeek } from '../../../services/react/FreyrService'
 import MealCardV3 from './MealCardV3'
-import { Button } from '@mui/material'
+import { Button, Card } from '@mui/material'
 
 const FreyrV3 = () => {
   const [ week, setWeek ] = useState( [] )
@@ -21,7 +21,7 @@ const FreyrV3 = () => {
   }, [] )
 
   return (
-    <>
+    <Card variant='outlined' className='card'>
       {!week && <CircularProgress />}
       {week && (
         <div className='freyr'>
@@ -49,13 +49,13 @@ const FreyrV3 = () => {
             className='find-today'
             onClick={() => {
               swiperRef.slideTo( today )
-            }} 
+            }}
           >
-          Today
+            Today
           </Button>
         </div>
       )}
-    </>
+    </Card>
   )
 }
 

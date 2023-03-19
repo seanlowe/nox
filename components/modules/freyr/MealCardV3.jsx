@@ -7,7 +7,7 @@ const MealCardV3 = ({ day: weekday }) => {
   const isToday = weekday.day === today
 
   return (
-    <div className={`meal-card ${isToday ? 'today' : ''}`}>
+    <div className={`card card-meal ${isToday ? 'today' : ''}`}>
       <h3 className='day-title'> {day} </h3>
       <div className='section-dinner'>
         <div className='dinner-name'> {dinner.name} </div>
