@@ -16,6 +16,7 @@
 Prerequesites:
 * node
 * docker
+* [overmind](https://github.com/DarthSim/overmind)
 
 
 To install:
