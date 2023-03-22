@@ -1,14 +1,16 @@
 ## Prisma and Database Design Notes
 
-This project uses [prisma-aurora](https://github.com/sabinadams/aurora) to combine individual Prisma models into one large schema.prisma file so as to increase maintainability, extensibility, and readability.
+> This project uses [prisma-aurora](https://github.com/sabinadams/aurora) to combine individual Prisma models into one large schema.prisma file so as to increase maintainability, extensibility, and readability.
+>
+> _nox_ uses Prisma to codify the database with models. All necessary models will live in the `prisma/schema` folder.
+>
+> When Aurora runs on application start, it will look for models in 2 places:
+> - `extensions/prisma`, and 
+> - `prisma/schema` 
+> 
+> and combine them all into one large `schema.prisma` file that will be used for managing the database. 
 
-_nox_ uses Prisma to codify the database with models. All necessary models will live in the `prisma/schema` folder.
-
-When Aurora runs on application start, it will look for models in 2 places:
-- `extensions/prisma`, and 
-- `prisma/schema` 
-
-and combine them all into one large `schema.prisma` file that will be used for managing the database.
+**Note:** Previous section is outdated. Update docs to mention [schemix](https://github.com/ridafkih/schemix).
 
 ### Prisma Model Structure
 ---

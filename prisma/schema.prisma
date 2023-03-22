@@ -1,18 +1,22 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+datasource database {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
 
 generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
 model Meal {
-  id       Int @id @default(autoincrement())
+  id       Int       @id @default(autoincrement())
   name     String
   type     String
   lastMade DateTime?
+}
+
+model Server {
+  id   Int    @id @default(autoincrement())
+  name String
+  ipv4 String
+  port String
 }

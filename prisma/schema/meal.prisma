@@ -1,6 +1,0 @@
-model Meal {
-  id       Int @id @default(autoincrement())
-  name     String
-  type     String
-  lastMade DateTime?
-}

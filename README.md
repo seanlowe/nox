@@ -45,12 +45,13 @@ It will be served at `localhost:3000/`
 
 
 ## Prisma
-This project uses Prisma to control database structure. After making any change to the [schema.prisma](/prisma/schema.prisma) file, run:
+This project uses Prisma to control database structure. In order to make a lasting change on the database or update it with newly created models, run:
 ```bash
+$ npm run db:mix
 $ npm run db:migrate
 $ npm run db:generate
 ```
-This updates the database with changes you've made to the schema, then generates a new Prisma Client for use in the project.
+This creates a schema.prisma file based on your models in `./prisma/models/`, updates the database with changes you've made to the schema, then generates a new Prisma Client for use in the project.
 
 To view your DB in the browser, run:
 ```bash
