@@ -7,10 +7,14 @@ import LabelWithValue from './LabelWithValue'
 
 const StatusModalV2 = () => {
   const { state: noxState } = useContext( StatusContext )
-  const haState = useHomeAssistant()
-  const hassDisplayStatus = formatHassState( haState )
   const noxDisplayStatus = formatNoxState( noxState )
+
   const HA_ENABLED = process.env.HA_ENABLED === 'true'
+  let hassDisplayStatus
+  if ( HA_ENABLED ) {
+    const haState = useHomeAssistant()
+    hassDisplayStatus = formatHassState( haState )
+  }
 
   return (
     <Card variant='outlined' className='card card-status'>

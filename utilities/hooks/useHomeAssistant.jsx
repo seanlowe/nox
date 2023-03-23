@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import axios from 'axios'
 import { HASS_STATE } from '../../services/react/HassService'
+import axios from 'axios'
 
 export const useHomeAssistant = () => {
   const [ state, setState ] = useState( HASS_STATE.LOADING )
