@@ -4,6 +4,7 @@ import StatusContext from '../../../utilities/contexts/StatusContext'
 import { useHomeAssistant } from '../../../utilities/hooks/useHomeAssistant'
 import { formatHassState, formatNoxState } from '../../../services/react/HassService'
 import LabelWithValue from './LabelWithValue'
+import SimpleModal2 from './AddServerModal'
 
 const StatusModalV2 = () => {
   const { state: noxState } = useContext( StatusContext )
@@ -19,7 +20,7 @@ const StatusModalV2 = () => {
   return (
     <Card variant='outlined' className='card card-status'>
       <CardHeader title='Status V2' className='status-title'/>
-      <CardContent>
+      <CardContent className='status-content'>
         <Grid container columnSpacing={4} className='status-v2-grid-container'>
           <LabelWithValue label='nox' name='nox' value={noxDisplayStatus} />
           {HA_ENABLED &&
@@ -31,6 +32,7 @@ const StatusModalV2 = () => {
             />
           }
         </Grid>
+        <SimpleModal2 />
       </CardContent>
     </Card>
   )

@@ -1,10 +1,29 @@
 .card {
-  background-color: #333333;
-  color: #AAAAAA;
+  background-color: $foreground-grey;
+  color: $text-default;
   width: 275px !important;
   height: 355px !important;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   text-align: center;
   border-radius: 20px;
   margin: 5px;
+}
+
+.dialog-content {
+  background-color: $foreground-grey;
+  color: $text-default
+}
+
+.MuiModal-backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.MuiTextField-root {
+  label {
+    color: $text-default;
+  }
+
+  .MuiInput-input {
+    color: $text-default;
+  }
 }

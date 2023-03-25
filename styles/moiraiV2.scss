@@ -17,7 +17,6 @@
 
 .card-status {
   background-color: $foreground-grey;
-  // color: $text-default;
   color: $text-default;
   border-radius: 20px;
   align-content: center;
@@ -37,7 +36,8 @@
   display: flex;
   justify-content: center;
   margin-left: unset;
-  width: 200px;
+  width: 100%;
+  overflow-y: auto;
 }
 
 .status-v2-key-value-pair {
@@ -70,4 +70,29 @@
   position: relative;
   top: 0.2rem;
   width: 25px;
+}
+
+.MuiDialog-paper {
+  transition: unset;
+  margin: unset;
+  background-color: $foreground-grey;
+  color: $text-default;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+}
+
+.add-server-text {
+  color: $text-default
+}
+
+.status-content {
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-server-btn {
+  margin-top: 20px;
 }
