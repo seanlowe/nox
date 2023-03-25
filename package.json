@@ -25,13 +25,13 @@
     "eco:restart:prod": "npx pm2 restart ecosystem.config.js --env prod"
   },
   "dependencies": {
-    "@emotion/react": "^11.8.2",
-    "@emotion/styled": "^11.8.1",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@mui/icons-material": "^5.5.1",
-    "@mui/material": "^5.5.0",
+    "@mui/material": "^5.11.14",
     "@prisma/client": "^4.11.0",
     "axios": "^0.27.2",
     "dotenv": "^16.0.0",
