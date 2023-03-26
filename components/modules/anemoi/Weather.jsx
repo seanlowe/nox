@@ -3,7 +3,7 @@ import { Card, CircularProgress } from '@mui/material'
 import { imageSrc } from '../../../services/react/WeatherService'
 import StatusContext from '../../../utilities/contexts/StatusContext'
 import Offline from '../../layouts/Offline'
-import axios from 'axios'
+import backendApi from '../../../utilities/instances/axios'
 
 const Weather = () => {
   const { state: { status: noxStatus } } = useContext( StatusContext )
@@ -18,12 +18,10 @@ const Weather = () => {
   const [ weather, setWeather ] = useState({})
   const [ isLoading, setIsLoading ] = useState( false )
   const [ isFetching, setIsFetching ] = useState( false )
-  const BACKEND_HOST = process.env.BACKEND_HOST
-  const BACKEND_PORT = process.env.BACKEND_PORT
 
   const fetchAndSetWeather = async () => {
     setIsLoading( true )
-    const { data: response } = await axios.get( `${BACKEND_HOST}:${BACKEND_PORT}/weather` )
+    const { data: response } = await backendApi.get( '/weather' )
     setWeather( response )
     setIsLoading( false )
   }
@@ -38,7 +36,7 @@ const Weather = () => {
     }
 
     setIsFetching( true )
-    const { data: response } = await axios.get( `${BACKEND_HOST}:${BACKEND_PORT}/weather?${query}` )
+    const { data: response } = await backendApi.get( `/weather?${query}` )
     setWeather( response )
 
     setQuery( '' )
