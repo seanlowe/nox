@@ -17,6 +17,8 @@ func main() {
   GO_PORT := os.Getenv("BACKEND_PORT")
 
   router := chi.NewRouter()
+  cors := routes.BuildCors()
+  router.Use(cors.Handler)
   routes.InitRoutes(router)
 
   fmt.Printf("starting server at port %s\n", GO_PORT)
