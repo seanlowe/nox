@@ -12,8 +12,24 @@ import {
 } from '@mui/material'
 import backendApi from '../../../utilities/instances/axios'
 
-const SimpleModal2 = () => {
+const AddServerModal = () => {
   const [ open, setOpen ] = useState( false )
+  const defaultFormValues = {
+    name: '',
+    host: '',
+    port: '',
+  }
+  const [ formValues, setFormValues ] = useState( defaultFormValues )
+
+  const handleInputChange = ( e ) => {
+    setFormValues(( prevState ) => {
+      return {
+        ...prevState,
+        [e.target.id]: e.target.value,
+      } 
+    })
+  }
+
 
   const handleOpen = () => {
     setOpen( true )
@@ -23,16 +39,20 @@ const SimpleModal2 = () => {
     setOpen( false )
   }
 
-  const handleSubmit = async () => {
-    const response = await backendApi.get( '/status/hass' )
-    // Handle form submission here
+  const handleSubmit = async ( e ) => {
+    e.preventDefault()
+    const response = await backendApi.post( '/status', formValues )
+
+    // uncomment when ready to reset form values on submit
+    // setFormValues( defaultFormValues )
     handleClose()
   }
 
   const defaultTextInputProps = {
     fullWidth: true,
     variant: 'standard',
-    className: 'add-server-input'
+    className: 'add-server-input',
+    onChange: handleInputChange
   }
 
   return (
@@ -54,6 +74,7 @@ const SimpleModal2 = () => {
               id='name'
               label='Server Name'
               type='text'
+              value={formValues.name || ''}
               {...defaultTextInputProps}
             />
             <Grid container spacing={2}>
@@ -61,7 +82,8 @@ const SimpleModal2 = () => {
                 <TextField
                   id='host'
                   label='Hostname or IP address'
-                  type='email'
+                  type='text'
+                  value={formValues.host || ''}
                   {...defaultTextInputProps}
                 />
               </Grid>
@@ -70,6 +92,7 @@ const SimpleModal2 = () => {
                   id='port'
                   label='Port'
                   type='number'
+                  value={formValues.port || ''}
                   {...defaultTextInputProps}
                   InputProps={{
                     startAdornment: <InputAdornment position='start'>:</InputAdornment>,
@@ -88,4 +111,4 @@ const SimpleModal2 = () => {
   )
 }
 
-export default SimpleModal2
+export default AddServerModal

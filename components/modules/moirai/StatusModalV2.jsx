@@ -4,7 +4,7 @@ import StatusContext from '../../../utilities/contexts/StatusContext'
 import { useHomeAssistant } from '../../../utilities/hooks/useHomeAssistant'
 import { formatHassState, formatNoxState } from '../../../services/react/HassService'
 import LabelWithValue from './LabelWithValue'
-import SimpleModal2 from './AddServerModal'
+import AddServerModal from './AddServerModal'
 
 const StatusModalV2 = () => {
   const { state: noxState } = useContext( StatusContext )
@@ -32,7 +32,7 @@ const StatusModalV2 = () => {
             />
           }
         </Grid>
-        <SimpleModal2 />
+        <AddServerModal />
       </CardContent>
     </Card>
   )
