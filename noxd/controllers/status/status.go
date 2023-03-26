@@ -1,19 +1,29 @@
 package status
 
 import (
-	"fmt"
-	"net/http"
+  "fmt"
+  "net/http"
+  "io/ioutil"
 
-	"github.com/go-chi/chi/v5"
+  "github.com/go-chi/chi/v5"
 )
 
 func Create(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("not implemented yet")
+  body, err := ioutil.ReadAll(r.Body)
+  if err != nil {
+      http.Error(w, "Failed to read request body", http.StatusInternalServerError)
+      return
+  }
+  defer r.Body.Close()
+
+  bodyString := string(body)
+  fmt.Printf("%v\n", bodyString)
+
+  w.WriteHeader(http.StatusOK)
 }
 
 func GetFromSlug(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	server := chi.URLParam(r, "server")
+  server := chi.URLParam(r, "server")
   
-	GetServerStatus(server, r)
+  GetServerStatus(server, r)
 }
