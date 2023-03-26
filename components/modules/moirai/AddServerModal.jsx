@@ -24,7 +24,7 @@ const SimpleModal2 = () => {
   }
 
   const handleSubmit = async () => {
-    const response = await backendApi.get( '/status/nox' )
+    const response = await backendApi.get( '/status/hass' )
     // Handle form submission here
     handleClose()
   }

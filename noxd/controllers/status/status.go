@@ -3,8 +3,6 @@ package status
 import (
 	"fmt"
 	"net/http"
-	
-	"nox/noxd/services/status"
 
 	"github.com/go-chi/chi/v5"
 )
@@ -17,5 +15,5 @@ func GetFromSlug(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	server := chi.URLParam(r, "server")
   
-	status.GetServerStatus(server)
+	GetServerStatus(server, r)
 }
