@@ -1,7 +1,6 @@
 package routes
 
 import (
-  hello "nox/noxd/controllers/hello"
   weather "nox/noxd/controllers/weather"
   status "nox/noxd/controllers/status"
 
@@ -9,7 +8,6 @@ import (
 )
 
 func InitRoutes(router chi.Router) {
-  router.Get("/hello", hello.Get)
   router.Get("/weather", weather.Get)
 
   router.Get("/status/{server}", status.GetFromSlug)
