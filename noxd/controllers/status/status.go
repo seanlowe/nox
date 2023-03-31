@@ -2,35 +2,13 @@ package status
 
 import (
   "encoding/json"
-  "fmt"
-  "io/ioutil"
-  "log"
   "net/http"
 
   "github.com/go-chi/chi/v5"
 )
 
 func Create(w http.ResponseWriter, r *http.Request) {
-  body, err := ioutil.ReadAll(r.Body)
-  if err != nil {
-      http.Error(w, "Failed to read request body", http.StatusInternalServerError)
-      return
-  }
-  defer r.Body.Close()
-
-  var data map[string]interface{}
-  err = json.Unmarshal([]byte(string(body)), &data)
-  if err != nil {
-    log.Fatal(err)
-  }
-
-  newServer := Server{
-    Name:  data["name"].(string),
-    Host:  data["host"].(string),
-    Port: data["port"].(string),
-  }
-
-  Insert(newServer)
+  InsertNewRecord(w, r)
 
   w.WriteHeader(http.StatusOK)
 }
