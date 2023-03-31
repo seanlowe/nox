@@ -30,7 +30,6 @@ const AddServerModal = () => {
     })
   }
 
-
   const handleOpen = () => {
     setOpen( true )
   }
@@ -41,7 +40,13 @@ const AddServerModal = () => {
 
   const handleSubmit = async ( e ) => {
     e.preventDefault()
-    const response = await backendApi.post( '/status', formValues )
+    try {
+      const response = await backendApi.post( '/status', formValues )
+
+      console.log( response )
+    } catch ( error ) {
+      console.log( error )
+    }
 
     // uncomment when ready to reset form values on submit
     // setFormValues( defaultFormValues )
