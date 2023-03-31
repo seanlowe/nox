@@ -1,40 +1,23 @@
-import { useReducer } from 'react'
+import { useEffect, useReducer } from 'react'
 import StatusContext from '../utilities/contexts/StatusContext'
 import '../styles/global.scss'
+import { initStatusReducer, statusReducer, offlineState } from '../utilities/reducers/statusReducer'
 
 // fix fontAwesome icon weirdness with next.js
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
 config.autoAddCss = false
 
-const initialState = {
-  indicator: '/images/status_red.png',
-  status: 'offline',
-}
-
-const statusReducer = ( state, action ) => {
-  switch ( action.type ) {
-  case 'setOffline':
-    return {
-      indicator: '/images/status_red.png',
-      status: 'offline',
-    }
-  case 'setOnline':
-    return {
-      indicator: '/images/status_blue.png',
-      status: 'online',
-    }
-  default:
-    throw new Error( `No matching action defined in statusReducer (${type})` )
-  }
-}
-
-function init() {
-  return initialState
-}
-
 export default function App({ Component, pageProps }) {
-  const [ state, dispatch ] = useReducer( statusReducer, {}, init )
+  const [ state, dispatch ] = useReducer( statusReducer, offlineState )
+
+  useEffect(() => {
+    async function fetchAndSetInitialState() {
+      const initialState = await initStatusReducer()
+      dispatch({ type: 'setStatus', payload: initialState })
+    }
+    fetchAndSetInitialState()
+  }, [] )
 
   return (
     <StatusContext.Provider value={{ state, dispatch }}>
