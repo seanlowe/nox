@@ -10,6 +10,9 @@ import (
 func InitRoutes(router chi.Router) {
   router.Get("/weather", weather.Get)
 
+  router.Get("/uptime", status.GetNoxStatus)
+
+  router.Get("/status", status.GetListOfServers)
   router.Get("/status/{server}", status.GetFromSlug)
   router.Post("/status", status.Create)
 }
