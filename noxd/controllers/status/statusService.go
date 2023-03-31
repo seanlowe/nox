@@ -14,17 +14,10 @@ import (
   dbLib "github.com/upper/db/v4"
 )
 
-func isDbConnectionValid(conn dbLib.Session) {
-  if conn == nil {
-    log.Fatal("The DB connection is invalid or broken.")
-    panic("No DB connection.")
-  }
-}
-
 func InsertNewRecord(w http.ResponseWriter, r *http.Request) (*Server) {
   var db = globals.DbConn
 
-  isDbConnectionValid(db)
+  globals.IsDbConnectionValid(db)
 
   body, err := ioutil.ReadAll(r.Body)
   if err != nil {
@@ -61,7 +54,7 @@ func retrieveConnectionDetailsFromServerName(serverName string, r *http.Request)
   var db = globals.DbConn
   var foundServer Server
 
-  isDbConnectionValid(db)
+  globals.IsDbConnectionValid(db)
 
   res := db.SQL().SelectFrom("Server")
   err := res.Where("name = ?", serverName).One(&foundServer)
@@ -92,7 +85,7 @@ func GetAllServers() ([]Server) {
   var db = globals.DbConn
   var serverList []Server
 
-  isDbConnectionValid(db)
+  globals.IsDbConnectionValid(db)
 
   err := db.SQL().SelectFrom("Server").All(&serverList)
   if err != nil {
