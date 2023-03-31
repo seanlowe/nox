@@ -17,6 +17,6 @@ model Meal {
 model Server {
   id   Int    @id @default(autoincrement())
   name String
-  ipv4 String
+  host String
   port String
 }
