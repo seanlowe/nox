@@ -37,6 +37,21 @@ export const formatNoxState = ( state ) => {
   )
 }
 
+export const convertBackendServerToFrontendServer = ( server ) => {
+  const { Name: name } = server
+  const valueStyle = 'status-v2-hass'
+
+  const formattedServer = {
+    label: name,
+    name,
+    value: formatServerState( 'Loading' ),
+    valueStyle
+  }
+
+  return formattedServer
+}
+
+
 export const getListOfServers = async () => {
   const { data } = await backendApi.get( '/status' )
 
@@ -47,15 +62,7 @@ export const getListOfServers = async () => {
 
   const servers = []
   data.forEach(( server ) => {
-    const { Name: name } = server
-    const valueStyle = 'status-v2-hass'
-
-    const newServer = {
-      label: name,
-      name,
-      value: formatServerState( 'Loading' ),
-      valueStyle
-    }
+    const newServer = convertBackendServerToFrontendServer( server )
 
     servers.push( newServer )
   })

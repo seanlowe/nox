@@ -12,7 +12,7 @@ import {
 } from '@mui/material'
 import backendApi from '../../../utilities/instances/axios'
 
-const AddServerModal = () => {
+const AddServerModal = ({ listCallback }) => {
   const [ open, setOpen ] = useState( false )
   const defaultFormValues = {
     name: '',
@@ -41,15 +41,13 @@ const AddServerModal = () => {
   const handleSubmit = async ( e ) => {
     e.preventDefault()
     try {
-      const response = await backendApi.post( '/status', formValues )
-
-      console.log( response )
+      const { data } = await backendApi.post( '/status', formValues )
+      listCallback( data )
     } catch ( error ) {
       console.log( error )
     }
 
-    // uncomment when ready to reset form values on submit
-    // setFormValues( defaultFormValues )
+    setFormValues( defaultFormValues )
     handleClose()
   }
 
@@ -63,7 +61,7 @@ const AddServerModal = () => {
   return (
     <div>
       <Button variant='outlined' color='primary' onClick={handleOpen} className='add-server-btn'>
-        Add Server 2
+        Add Server
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <div className='dialog-content'>

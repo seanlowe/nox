@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { Grid, CardHeader, Card, CardContent } from '@mui/material'
-import { getListOfServers } from '../../../services/react/StatusService'
+import {
+  convertBackendServerToFrontendServer,
+  getListOfServers
+} from '../../../services/react/StatusService'
 import LabelWithValue from './LabelWithValue'
 import AddServerModal from './AddServerModal'
 
@@ -26,6 +29,11 @@ const StatusModalV2 = () => {
     setFullServerList( newServerList )
   }
 
+  const addServerToList = ( newServer ) => {
+    const formattedServer = convertBackendServerToFrontendServer( newServer )
+    setFullServerList( [ ...fullServerList, formattedServer ] )
+  }
+
   // on first load, grab all servers from the DB and add them to
   // our state controlled server list
   useEffect(() => {
@@ -41,7 +49,7 @@ const StatusModalV2 = () => {
             return <LabelWithValue key={server.name} {...server} />
           })}
         </Grid>
-        <AddServerModal />
+        <AddServerModal listCallback={addServerToList} />
       </CardContent>
     </Card>
   )
