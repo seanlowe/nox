@@ -1,31 +1,18 @@
 package weather
 
 import (
-  "fmt"
   "encoding/json"
+  "fmt"
   "net/http"
   "net/url"
   "os"
 
-  "github.com/joho/godotenv"
   "nox/noxd/helpers"
 )
 
-type Coordinates struct {
-  Lat float64 `json:"lat"`
-  Lon float64 `json:"lon"`
-}
-
-type GeocodingResponse struct {
-  Lat float64 `json:"lat"`
-  Lon float64 `json:"lon"`
-  Name string `json:"name"`
-  Country string `json:"country"`
-  State string `json:"state"`
-}
-
 func buildWeatherParams(lat float64, lon float64) (string) {
   WEATHER_URL := os.Getenv("WEATHER_URL")
+  // todo: move weather api key into init()?
   WEATHER_API_KEY := os.Getenv("WEATHER_API_KEY")
 
   params := url.Values{}
@@ -90,8 +77,6 @@ func handleNoQuery(client *http.Client, c *Coordinates) {
 }
 
 func FetchWeather(query string) (string) {
-  err := godotenv.Load(".env")
-  checkAndHandleError(err, "problem parsing .env\n")
   var client = &http.Client{}
   var c Coordinates
   
@@ -103,7 +88,7 @@ func FetchWeather(query string) (string) {
   
   // build the query and make the request
   weatherUrl := buildWeatherParams(c.Lat, c.Lon)
-  weather, err := helpers.Get( weatherUrl, client )
+  weather, err := helpers.Get(weatherUrl, client)
   checkAndHandleError(err, "couldn't get weather\n")
 
   fmt.Println("succeeded in fetching weather")
