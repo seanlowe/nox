@@ -8,9 +8,11 @@ import (
 )
 
 func Create(w http.ResponseWriter, r *http.Request) {
-  InsertNewRecord(w, r)
+  server := InsertNewRecord(w, r)
+  result, _ := json.Marshal(server)
 
   w.WriteHeader(http.StatusOK)
+  w.Write(result)
 }
 
 func GetFromSlug(w http.ResponseWriter, r *http.Request) {

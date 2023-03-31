@@ -21,7 +21,7 @@ func isDbConnectionValid(conn dbLib.Session) {
   }
 }
 
-func InsertNewRecord(w http.ResponseWriter, r *http.Request) {
+func InsertNewRecord(w http.ResponseWriter, r *http.Request) (*Server) {
   var db = globals.DbConn
 
   isDbConnectionValid(db)
@@ -29,7 +29,7 @@ func InsertNewRecord(w http.ResponseWriter, r *http.Request) {
   body, err := ioutil.ReadAll(r.Body)
   if err != nil {
     http.Error(w, "Failed to read request body", http.StatusInternalServerError)
-    return
+    return nil
   }
   defer r.Body.Close()
 
@@ -46,10 +46,14 @@ func InsertNewRecord(w http.ResponseWriter, r *http.Request) {
   }
 
   serverCollection := db.Collection("Server")
-  _, err = serverCollection.Insert(&newServer)
+  res, err := serverCollection.Insert(&newServer)
   if err != nil {
     log.Fatal("Insert: ", err)
   }
+
+  newServer.ID = int32(res.ID().(int64))
+
+  return &newServer
 }
 
 // get an individual server's details based on its name
