@@ -5,37 +5,37 @@ const { db } = require( '../../utilities/scripts/js/check-db-connection' )
 const meals = [
   {
     name: 'Cereal',
-    type: 'Dinner',
+    type: 'dinner',
     lastMade: null,
   },
   {
     name: 'Toast',
-    type: 'Dinner',
+    type: 'dinner',
     lastMade: null,
   },
   {
     name: 'Sandwiches',
-    type: 'Dinner',
+    type: 'dinner',
     lastMade: null,
   },
   {
     name: 'Grilled Cheese',
-    type: 'Dinner',
+    type: 'dinner',
     lastMade: null,
   },
   {
     name: 'Pizza',
-    type: 'Dinner',
+    type: 'dinner',
     lastMade: null,
   },
   {
     name: 'Meatloaf',
-    type: 'Dinner',
+    type: 'dinner',
     lastMade: null,
   },
   {
     name: 'Orange Chicken',
-    type: 'Dinner',
+    type: 'dinner',
     lastMade: null,
   },
 ]
