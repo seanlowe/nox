@@ -10,8 +10,6 @@ import (
   "time"
 
   "nox/noxd/globals"
-
-  dbLib "github.com/upper/db/v4"
 )
 
 func InsertNewRecord(w http.ResponseWriter, r *http.Request) (*Server) {

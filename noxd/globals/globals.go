@@ -1,6 +1,8 @@
 package globals
 
 import (
+  "log"
+
 	"github.com/upper/db/v4"
 )
 
