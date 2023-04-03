@@ -1,4 +1,6 @@
 import axios from 'axios'
+import backendApi from '../../utilities/instances/axios'
+import { convertCapitalizedObjectToLowercaseObject } from './helpers'
 
 export const daysOfTheWeek = [
   'Sunday',
@@ -13,7 +15,7 @@ export const daysOfTheWeek = [
 const records = []
 
 const getDinners = async () => {
-  const { data: { meals: dinners } } = await axios.get( '/api/meal?type=Dinner' )
+  const { data: dinners } = await backendApi.get( '/meal?type=dinner' )
 
   return dinners
 }
@@ -53,13 +55,17 @@ const storeCurrentWeek = async ( week, isNewWeek ) => {
     isNewWeek
   }
 
+  // await backendApi.post( '/meal', body )
   await axios.post( '/api/meal', body )
 
   return
 }
 
 const checkForWeek = async () => {
-  return await axios.get( '/api/meal?type=week' )
+  const { data } = await backendApi.get( '/meal/week' )
+  const dinners = convertCapitalizedObjectToLowercaseObject( data )
+
+  return dinners
 }
 
 // return type: [ {day: Monday, lunch: {}, dinner: {}}, {day: Tuesday}, ... ]
@@ -85,11 +91,9 @@ export const displayMealWeek = async ( isNewWeek = false ) => {
   }
 
   // check for current week and return if it exists
-  const { data } = await checkForWeek()
-  const week = Object.values( data )
-
-  if ( week.length ) {
-    return week
+  const mealWeek = await checkForWeek()
+  if ( mealWeek.length ) {
+    return mealWeek
   }
   
   // else, create a new week
