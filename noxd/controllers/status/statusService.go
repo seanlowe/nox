@@ -14,7 +14,6 @@ import (
 
 func InsertNewRecord(w http.ResponseWriter, r *http.Request) (*Server) {
   var db = globals.DbConn
-
   globals.IsDbConnectionValid(db)
 
   body, err := ioutil.ReadAll(r.Body)
@@ -49,9 +48,8 @@ func InsertNewRecord(w http.ResponseWriter, r *http.Request) (*Server) {
 
 // get an individual server's details based on its name
 func retrieveConnectionDetailsFromServerName(serverName string, r *http.Request) (string, string) {
-  var db = globals.DbConn
   var foundServer Server
-
+  var db = globals.DbConn
   globals.IsDbConnectionValid(db)
 
   res := db.SQL().SelectFrom("Server")
@@ -80,9 +78,8 @@ func GetServerStatus(server string, r *http.Request) (s string) {
 
 // get a list of all servers
 func GetAllServers() ([]Server) {
-  var db = globals.DbConn
   var serverList []Server
-
+  var db = globals.DbConn
   globals.IsDbConnectionValid(db)
 
   err := db.SQL().SelectFrom("Server").All(&serverList)

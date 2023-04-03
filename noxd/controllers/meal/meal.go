@@ -11,6 +11,12 @@ func GetQueryParameter(r *http.Request, key string) (string) {
   return query.Get(key)
 }
 
+func CreateMealWeek(w http.ResponseWriter, r *http.Request) {
+  CreateWeek(w, r)
+  w.WriteHeader(http.StatusCreated)
+  w.Write([]byte("success"))
+}
+
 func GetFromSlug(w http.ResponseWriter, r *http.Request) {
   typeParam := GetQueryParameter(r, "type")
   fmt.Println("typeParam", typeParam)

@@ -4,6 +4,7 @@ import (
   "fmt"
   "net/http"
   "io/ioutil"
+  "os"
 )
 
 func Get(url string, client *http.Client) (string, error) {
@@ -38,4 +39,19 @@ func Contains[T comparable](s []T, e T) bool {
   }
 
   return false
+}
+
+func CreateOrUpdateFile(filename string, content []byte) error {
+  file, err := os.Create(filename)
+  if err != nil {
+    return fmt.Errorf("error creating file: %v", err)
+  }
+  defer file.Close()
+
+  _, err = file.Write(content)
+  if err != nil {
+    return fmt.Errorf("error writing to file: %v", err)
+  }
+
+  return nil
 }

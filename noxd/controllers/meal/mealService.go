@@ -5,6 +5,7 @@ import (
   "fmt"
   "io/ioutil"
   "log"
+  "net/http"
   "os"
 
   "nox/noxd/globals"
@@ -31,6 +32,21 @@ func checkFileExistsAndRead(filename string) ([]byte, error) {
   return data, nil
 }
 
+func CreateWeek(w http.ResponseWriter, r *http.Request) (error) {
+  fmt.Println("in createWeek")
+
+  body, err := ioutil.ReadAll(r.Body)
+  if err != nil {
+    http.Error(w, "Failed to read request body", http.StatusInternalServerError)
+    return nil
+  }
+  defer r.Body.Close()
+
+  fmt.Printf("%v", body)
+
+  return nil
+}
+
 func GetWeek() (*[]MealWeek) {
   weekFile, err := checkFileExistsAndRead(FREYR_WEEK_LOG)
   if weekFile == nil || err != nil {
@@ -47,16 +63,23 @@ func GetWeek() (*[]MealWeek) {
 }
 
 func getMealsByMealtime(mealtime string) (*[]Meal) {
-  var db = globals.DbConn
   var meals []Meal
-  
+  var db = globals.DbConn
   globals.IsDbConnectionValid(db)
+  
+  fmt.Printf("getMealsByMealtime mealtime %s\n", mealtime)
 
-  res := db.SQL().SelectFrom("Meal")
-  err := res.Where("type = ?", mealtime).All(&meals)
+  // res := db.SQL().SelectFrom("Meal")
+  // err := res.Where("type = ?", mealtime).All(&meals)
+  
+  cond := db.Cond("type": mealtime)
+  mealCollection := db.Collection("Meal")
+  err := mealCollection.Find(cond).All(&meals)
   if err != nil {
     log.Fatal("Where: ", err)
   }
+
+  fmt.Printf("getMealsByMealTime -> %v\n", meals)
 
   return &meals
 }
