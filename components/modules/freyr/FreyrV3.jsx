@@ -3,7 +3,8 @@ import { Navigation, Pagination, Virtual } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { displayMealWeek } from '../../../services/react/FreyrService'
 import MealCardV3 from './MealCardV3'
-import { Button, Card } from '@mui/material'
+import { Button, Card, CircularProgress } from '@mui/material'
+import LoadingSpinner from '../../layouts/LoadingSpinner'
 
 const FreyrV3 = () => {
   const [ week, setWeek ] = useState( [] )
@@ -21,41 +22,43 @@ const FreyrV3 = () => {
   }, [] )
 
   return (
-    <Card variant='outlined' className='card'>
-      {!week && <CircularProgress />}
+    <>
+      {!week && <LoadingSpinner />}
       {week && (
-        <div className='freyr'>
-          <Swiper
-            onSwiper={setSwiperRef}
-            slidesPerView={1}
-            spaceBetween={30}
-            pagination={{
-              clickable: true,
-            }}
-            navigation={true}
-            modules={[ Pagination, Navigation, Virtual ]}
-            virtual
-          >
-            {week.map(( weekday ) => {
-              return (
-                <SwiperSlide key={weekday.day} >
-                  <MealCardV3 day={weekday} />
-                </SwiperSlide>
-              )
-            })}
-          </Swiper>
-          <Button
-            variant='outlined'
-            className='find-today'
-            onClick={() => {
-              swiperRef.slideTo( today )
-            }}
-          >
-            Today
-          </Button>
-        </div>
+        <Card variant='outlined' className='card'>
+          <div className='freyr'>
+            <Swiper
+              onSwiper={setSwiperRef}
+              slidesPerView={1}
+              spaceBetween={30}
+              pagination={{
+                clickable: true,
+              }}
+              navigation={true}
+              modules={[ Pagination, Navigation, Virtual ]}
+              virtual
+            >
+              {week.map(( weekday ) => {
+                return (
+                  <SwiperSlide key={weekday.day} >
+                    <MealCardV3 day={weekday} />
+                  </SwiperSlide>
+                )
+              })}
+            </Swiper>
+            <Button
+              variant='outlined'
+              className='find-today'
+              onClick={() => {
+                swiperRef.slideTo( today )
+              }}
+            >
+              Today
+            </Button>
+          </div>
+        </Card>
       )}
-    </Card>
+    </>
   )
 }
 

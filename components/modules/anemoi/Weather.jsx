@@ -4,6 +4,7 @@ import { imageSrc } from '../../../services/react/WeatherService'
 import StatusContext from '../../../utilities/contexts/StatusContext'
 import Offline from '../../layouts/Offline'
 import backendApi from '../../../utilities/instances/axios'
+import LoadingSpinner from '../../layouts/LoadingSpinner'
 
 const Weather = () => {
   const { state: { status: noxStatus } } = useContext( StatusContext )
@@ -62,11 +63,7 @@ const Weather = () => {
 
   return (
     <>
-      {isLoading && (
-        <Card className='card card-spinner'>
-          <CircularProgress className='weather-spinner'/>
-        </Card>
-      )}
+      {isLoading && <LoadingSpinner />}
       {!isLoading && (
         <Card className='card card-weather'>
           <div className='main-container'>
