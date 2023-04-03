@@ -1,5 +1,4 @@
 import shell from 'shelljs'
-import { db } from '../../utilities/scripts/js/check-db-connection'
 
 const FREYR_STORAGE_PATH = './storage/freyr'
 
@@ -22,45 +21,4 @@ export const storeWeekToFile = ( data, isNewWeek, res ) => {
   }
 
   return res.status( 201 ).json({ message: 'success' })
-}
-
-export const createNewMeal = async ( data, res ) => {
-  const {
-    name,
-    type,
-  } = data
-
-  const newMeal = {
-    name,
-    type,
-    lastMade: null,
-  }
-
-  const meal = await db.meal.create({
-    data: newMeal,
-  })
-  
-  return res.status( 201 ).json( meal )
-}
-
-export const getWeek = ( res ) => {
-  const weekExists = checkWeekFileExists()
-  if ( !weekExists ) {
-    return res.status( 200 ).json( [] )
-  }
-
-  const json = shell.cat( `${FREYR_STORAGE_PATH}/week.json` )
-  const data = JSON.parse( json )
-
-  return res.status( 200 ).json({ ...data })
-}
-
-export const getMeals = async ( query, res ) => {
-  const meals = await db.meal.findMany({
-    where: {
-      ...query
-    },
-  })
-
-  return res.status( 200 ).json({ meals })
 }
