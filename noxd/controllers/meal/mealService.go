@@ -69,12 +69,12 @@ func getMealsByMealtime(mealtime string) (*[]Meal) {
   
   fmt.Printf("getMealsByMealtime mealtime %s\n", mealtime)
 
-  // res := db.SQL().SelectFrom("Meal")
-  // err := res.Where("type = ?", mealtime).All(&meals)
+  res := db.SQL().SelectFrom("Meal")
+  err := res.Where("type = ?", mealtime).All(&meals)
   
-  cond := db.Cond("type": mealtime)
-  mealCollection := db.Collection("Meal")
-  err := mealCollection.Find(cond).All(&meals)
+  // cond := db.Cond("type": mealtime)
+  // mealCollection := db.Collection("Meal")
+  // err := mealCollection.Find(cond).All(&meals)
   if err != nil {
     log.Fatal("Where: ", err)
   }
