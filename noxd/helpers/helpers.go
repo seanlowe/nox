@@ -29,3 +29,13 @@ func Get(url string, client *http.Client) (string, error) {
 
   return string(body), nil
 }
+
+func Contains[T comparable](s []T, e T) bool {
+  for _, v := range s {
+    if v == e {
+      return true
+    }
+  }
+
+  return false
+}
