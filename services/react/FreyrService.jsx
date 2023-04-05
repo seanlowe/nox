@@ -1,4 +1,3 @@
-import axios from 'axios'
 import backendApi from '../../utilities/instances/axios'
 import { convertCapitalizedObjectToLowercaseObject } from './helpers'
 
@@ -15,21 +14,19 @@ export const daysOfTheWeek = [
 const records = []
 
 const getDinners = async () => {
-  console.log( 'in getDinners' )
   const { data } = await backendApi.get( '/meal?type=dinner' )
   const dinners = convertCapitalizedObjectToLowercaseObject( data )
-
-  console.log( 'dinners returned in getDinners', dinners )
 
   return dinners
 }
 
 const isViableEntry = ( meal ) => {
-  console.log( 'in isViableEntry w/meal= ', meal )
-  const { lastMade } = meal
+  // lastMade is returned as an ISO String
+  const { lastMade: lastMadeISO } = meal
+  const lastMade = new Date( lastMadeISO ).getTime()
   const ago = new Date().setDate( new Date().getDate() - 14 )
-  
-  if ( !lastMade || lastMade > ago ) {
+
+  if ( !!lastMade || lastMade > ago ) {
     return true
   }
 
@@ -47,22 +44,23 @@ const getRandomDinners = async () => {
     const item = records[Math.floor( Math.random() * records.length )]
     if ( !randomDinners.includes( item ) && isViableEntry( item )) {
       randomDinners.push( item )
+
+      // remove used records to reduce extra loops
+      records.filter(( usedMeal ) => {
+        return item !== usedMeal 
+      })
     }
   }
 
   return randomDinners
 }
 
-const storeCurrentWeek = async ( week, isNewWeek ) => {
-  console.log( 'in storeCurrentWeek' )
+const storeCurrentWeek = async ( week ) => {
   const body = {
-    type: 'week',
     data: JSON.stringify( week ),
-    isNewWeek
   }
 
-  await backendApi.post( '/meal', body )
-  // await axios.post( '/api/meal', body )
+  await backendApi.post( '/meal/week', body )
 
   return
 }
@@ -75,8 +73,7 @@ const checkForWeek = async () => {
 }
 
 // return type: [ {day: Monday, lunch: {}, dinner: {}}, {day: Tuesday}, ... ]
-const createMealWeek = async ( isNewWeek ) => {
-  console.log( 'in createMealWeek' )
+const createMealWeek = async () => {
   const week = []
   const dinnersForTheWeek = await getRandomDinners()
   for ( let i = 0; i < daysOfTheWeek.length; i++ ) {
@@ -88,14 +85,14 @@ const createMealWeek = async ( isNewWeek ) => {
     week.push( day )
   }
 
-  storeCurrentWeek( week, isNewWeek )
+  storeCurrentWeek( week )
   return week
 }
 
 export const displayMealWeek = async ( isNewWeek = false ) => {
-  // if ( isNewWeek ) {
-  return createMealWeek( true )
-  // }
+  if ( isNewWeek ) {
+    return createMealWeek()
+  }
 
   // check for current week and return if it exists
   const mealWeek = await checkForWeek()
