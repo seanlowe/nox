@@ -33,16 +33,23 @@ func checkFileExistsAndRead(filename string) ([]byte, error) {
 }
 
 func CreateWeek(w http.ResponseWriter, r *http.Request) (error) {
-  fmt.Println("in createWeek")
-
   body, err := ioutil.ReadAll(r.Body)
   if err != nil {
     http.Error(w, "Failed to read request body", http.StatusInternalServerError)
-    return nil
+    return err
   }
   defer r.Body.Close()
 
-  fmt.Printf("%v", body)
+  var data map[string]interface{}
+  err = json.Unmarshal([]byte(body), &data)
+  if err != nil {
+    log.Fatal("unmarshal: ", err)
+    return err
+  }
+
+  postBody := data["data"].(string)
+
+  helpers.CreateOrUpdateFile(FREYR_WEEK_LOG, []byte(postBody))
 
   return nil
 }
@@ -67,19 +74,12 @@ func getMealsByMealtime(mealtime string) (*[]Meal) {
   var db = globals.DbConn
   globals.IsDbConnectionValid(db)
   
-  fmt.Printf("getMealsByMealtime mealtime %s\n", mealtime)
-
   res := db.SQL().SelectFrom("Meal")
   err := res.Where("type = ?", mealtime).All(&meals)
-  
-  // cond := db.Cond("type": mealtime)
-  // mealCollection := db.Collection("Meal")
-  // err := mealCollection.Find(cond).All(&meals)
+
   if err != nil {
     log.Fatal("Where: ", err)
   }
-
-  fmt.Printf("getMealsByMealTime -> %v\n", meals)
 
   return &meals
 }
