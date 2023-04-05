@@ -41,7 +41,7 @@ func InsertNewRecord(w http.ResponseWriter, r *http.Request) (*Server) {
     log.Fatal("Insert: ", err)
   }
 
-  newServer.ID = int32(res.ID().(int64))
+  newServer.Id = int32(res.ID().(int64))
 
   return &newServer
 }

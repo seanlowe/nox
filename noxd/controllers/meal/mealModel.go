@@ -13,7 +13,7 @@ type MealWeek struct {
 }
 
 type Meal struct {
-  ID int32 `db:"id,omitempty" json:"id"`
+  Id int32 `db:"id,omitempty" json:"id"`
   Name string `db:"name" json:"name"`
   Type string `db:"type" json:"type"`
   LastMade time.Time `db:"lastMade" json:"lastMade"`

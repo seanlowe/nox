@@ -3,7 +3,7 @@ export const convertCapitalizedObjectToLowercaseObject = ( obj ) => {
     if ( typeof obj[key] === 'object' ) {
       convertCapitalizedObjectToLowercaseObject( obj[key] )
     }
-    const newKey = key.toLowerCase()
+    const newKey = key[0].toLowerCase() + key.slice( 1 )
     if ( newKey === key ) {
       return
     }
