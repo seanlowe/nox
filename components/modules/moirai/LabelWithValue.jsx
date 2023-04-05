@@ -6,9 +6,10 @@ import { useServerStatus } from '../../../utilities/hooks/useServerStatus'
 
 const LabelWithValue = ({ label, name, value = null, valueStyle = null }) => {
   const { state: noxState } = useContext( StatusContext )
+  const serverState = useServerStatus( name )
+
   let serverValue = null
   if ( name !== 'nox' ) {
-    const serverState = useServerStatus( name )
     serverValue = formatServerState( serverState )
   } else {
     serverValue = formatNoxState( noxState )

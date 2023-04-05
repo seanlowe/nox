@@ -17,6 +17,14 @@ func Create(w http.ResponseWriter, r *http.Request) {
 
 func GetFromSlug(w http.ResponseWriter, r *http.Request) {
   server := chi.URLParam(r, "server")
+
+  if (server == "nox") {
+    w.WriteHeader(http.StatusNoContent)
+    w.Write([]byte("Skipped."))
+
+    return
+  }
+
   status := GetServerStatus(server, r)
 
   w.WriteHeader(http.StatusOK)

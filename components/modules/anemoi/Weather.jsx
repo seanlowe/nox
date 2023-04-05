@@ -5,16 +5,10 @@ import StatusContext from '../../../utilities/contexts/StatusContext'
 import Offline from '../../layouts/Offline'
 import backendApi from '../../../utilities/instances/axios'
 import LoadingSpinner from '../../layouts/LoadingSpinner'
+import Image from 'next/image'
 
 const Weather = () => {
   const { state: { status: noxStatus } } = useContext( StatusContext )
-
-  if ( noxStatus === 'offline' ) {
-    console.log( 'nox is offline, cannot retrieve weather' )
-
-    return <Offline message='Cannot retrieve weather data.' />
-  }
-
   const [ query, setQuery ] = useState( '' )
   const [ weather, setWeather ] = useState({})
   const [ isLoading, setIsLoading ] = useState( false )
@@ -30,6 +24,12 @@ const Weather = () => {
   useEffect(() => {
     fetchAndSetWeather()
   }, [] )
+
+  if ( noxStatus === 'offline' ) {
+    console.log( 'nox is offline, cannot retrieve weather' )
+
+    return <Offline message='Cannot retrieve weather data.' />
+  }
 
   const search = async ( e ) => {
     if ( e.key !== 'Enter' ) {
@@ -59,6 +59,22 @@ const Weather = () => {
     return <i className='fa fa-search' onClick={() => {
       return search({ key: 'Enter' }) 
     }} />
+  }
+
+  const renderWeatherImageAndDescription = () => {
+    // we are getting the image through an API call
+    // so Next/Image can't really be used here.
+    return (
+      <>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          className='city-icon'
+          src={imageSrc( weather.weather[0].icon )}
+          alt={weather.weather[0].description}
+        />
+        <p className='description'>{weather.weather[0].description}</p>
+      </>
+    )
   }
 
   return (
@@ -91,12 +107,7 @@ const Weather = () => {
                   <sup>&deg;F</sup>
                 </div>
                 <div className='info'>
-                  <img
-                    className='city-icon'
-                    src={imageSrc( weather.weather[0].icon )}
-                    alt={weather.weather[0].description}
-                  />
-                  <p className='description'>{weather.weather[0].description}</p>
+                  {renderWeatherImageAndDescription()}
                 </div>
               </div>
             )}

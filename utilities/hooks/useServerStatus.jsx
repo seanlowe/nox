@@ -19,7 +19,7 @@ export const useServerStatus = ( name ) => {
     return () => {
       clearTimeout( interval )
     }
-  }, [] )
+  }, [ name ] )
 
   return state
 }

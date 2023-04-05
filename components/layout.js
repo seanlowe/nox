@@ -4,7 +4,9 @@ import Head from 'next/head'
 import StatusContext from '../utilities/contexts/StatusContext'
 import NavV2 from './nav/V2/NavV2'
 
-const Banner = dynamic(() => import('./layouts/Banner'), {
+const Banner = dynamic(() => {
+  return import( './layouts/Banner' ) 
+}, {
   ssr: false
 })
 

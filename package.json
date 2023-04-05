@@ -6,10 +6,10 @@
   "scripts": {
     "predev": "node ./utilities/scripts/js/pre-dev.js",
     "dev": "next dev",
-    "build": "next build",
+    "dev:go": "go run ./noxd.go",
+    "build": "next build && npm run go:build:server",
     "start": "next start",
-    "go:build:server": "go build -o noxd noxd.go",
-    "go:build:cli": "go build -o nox-cli nox-cli.go",
+    "go:build:server": "go build -o ./build/noxd ./noxd.go",
     "db:generate": "npx prisma generate",
     "db:migrate": "npx prisma migrate dev",
     "db:mix": "node ./prisma/index.js",
@@ -45,12 +45,15 @@
     "react-responsive": "^9.0.0-beta.10",
     "sass": "^1.49.9",
     "schemix": "^1.9.1",
+    "sharp": "^0.32.0",
     "shelljs": "^0.8.5",
     "swiper": "^8.3.0",
     "web-animations-js": "^2.3.2"
   },
   "devDependencies": {
     "eslint": "^8.14.0",
+    "eslint-config-next": "13.2.4",
+    "eslint-plugin-next": "^0.0.0",
     "eslint-plugin-react": "^7.29.4"
   },
   "prisma": {
