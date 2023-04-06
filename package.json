@@ -6,10 +6,10 @@
   "scripts": {
     "predev": "node ./utilities/js/pre-dev.js",
     "dev": "next dev ./src",
-    "dev:go": "go run ./noxd.go",
+    "dev:go": "cd noxd/ && go run ./noxd.go",
     "build": "next build ./src && npm run go:build:server",
     "start": "next start ./src",
-    "go:build:server": "go build -o ./build/noxd ./noxd.go",
+    "go:build:server": "go build -o ./build/noxd ./noxd/noxd.go",
     "db:generate": "npx prisma generate",
     "db:migrate": "npx prisma migrate dev",
     "db:mix": "node ./prisma/index.js",

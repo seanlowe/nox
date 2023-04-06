@@ -7,7 +7,7 @@ import (
   "net/url"
   "os"
 
-  "nox/noxd/helpers"
+  "noxd/helpers"
 )
 
 func buildWeatherParams(lat float64, lon float64) (string) {

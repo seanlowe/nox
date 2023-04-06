@@ -8,8 +8,8 @@ import (
   "net/http"
   "os"
 
-  "nox/noxd/globals"
-  "nox/noxd/helpers"
+  "noxd/globals"
+  "noxd/helpers"
 )
 
 var FREYR_WEEK_LOG string = "./storage/freyr/week.json"

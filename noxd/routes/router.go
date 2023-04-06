@@ -1,9 +1,9 @@
 package routes
 
 import (
-  meal "nox/noxd/controllers/meal"
-  status "nox/noxd/controllers/status"
-  weather "nox/noxd/controllers/weather"
+  meal "noxd/controllers/meal"
+  status "noxd/controllers/status"
+  weather "noxd/controllers/weather"
 
   "github.com/go-chi/chi/v5"
 )

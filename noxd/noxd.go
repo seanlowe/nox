@@ -6,8 +6,8 @@ import (
   "log"
   "os"
 
-  "nox/noxd/routes"
-  "nox/noxd/globals"
+  "noxd/routes"
+  "noxd/globals"
 
   "github.com/joho/godotenv"
   "github.com/go-chi/chi/v5"
@@ -17,7 +17,7 @@ import (
 func init() {
   fmt.Println("Initializing NOX . . . ")
 
-  err := godotenv.Load(".env")
+  err := godotenv.Load("../.env")
 
   DATABASE_URL := os.Getenv("DATABASE_URL_UPPER")
   connURL, err := postgresql.ParseURL(DATABASE_URL)

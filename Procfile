@@ -1,2 +1,2 @@
-go: go run noxd.go
+go: npm run dev:go
 web: npm run dev

@@ -9,7 +9,7 @@ import (
   "net/http"
   "time"
 
-  "nox/noxd/globals"
+  "noxd/globals"
 )
 
 func InsertNewRecord(w http.ResponseWriter, r *http.Request) (*Server) {
