@@ -8,10 +8,10 @@ const status = checkContainerStatus()
 switch ( status ) {
 case 'running':
 case 'exists':
-  shell.exec( './utilities/scripts/sh/dev-existing.sh' )
+  shell.exec( './utilities/sh/dev-existing.sh' )
   break
 case 'new':
-  shell.exec( './utilities/scripts/sh/dev-new.sh' )
+  shell.exec( './utilities/sh/dev-new.sh' )
 default:
   break
 }
