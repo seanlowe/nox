@@ -6,6 +6,7 @@ const { parsed: myEnv } = dotenv.config({
 })
 
 module.exports = {
+  distDir: '../.next',
   webpack: ( config ) => {
     config.plugins.push( new webpack.EnvironmentPlugin( myEnv ))
       

@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import { Grid, CardHeader, Card, CardContent } from '@mui/material'
+import LabelWithValue from './LabelWithValue'
+import AddServerModal from './AddServerModal'
+import LoadingSpinner from '../../layouts/LoadingSpinner'
 import {
   convertBackendServerToFrontendServer,
   getListOfServers
-} from '../../../services/react/StatusService'
-import LabelWithValue from './LabelWithValue'
-import AddServerModal from './AddServerModal'
+} from '../../../services/StatusService'
 
 const StatusModalV2 = () => {
   const [ fullServerList, setFullServerList ] = useState( [] )
@@ -41,17 +42,19 @@ const StatusModalV2 = () => {
   }, [] )
 
   return (
-    <Card variant='outlined' className='card card-status'>
-      <CardHeader title='Status V2' className='status-title'/>
-      <CardContent className='status-content'>
-        <Grid container columnSpacing={4} className='status-v2-grid-container'>
-          {fullServerList.map(( server ) => {
-            return <LabelWithValue key={server.name} {...server} />
-          })}
-        </Grid>
-        <AddServerModal listCallback={addServerToList} />
-      </CardContent>
-    </Card>
+    <Suspense fallback={LoadingSpinner}>
+      <Card variant='outlined' className='card card-status'>
+        <CardHeader title='Status V2' className='status-title'/>
+        <CardContent className='status-content'>
+          <Grid container columnSpacing={4} className='status-v2-grid-container'>
+            {fullServerList.map(( server ) => {
+              return <LabelWithValue key={server.name} {...server} />
+            })}
+          </Grid>
+          <AddServerModal listCallback={addServerToList} />
+        </CardContent>
+      </Card>
+    </Suspense>
   )
 }
 

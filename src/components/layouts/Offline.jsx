@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
-import { Card, CardHeader, CardContent, Grid, CardActions, Typography, Button } from '@mui/material'
+import { Card, CardHeader, CardContent, Grid } from '@mui/material'
 import PropTypes from 'prop-types'
 
 const Offline = ({ message = '' }) => {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { SERVER_STATE } from '../../services/react/StatusService'
+import { SERVER_STATE } from '../../services/StatusService'
 import backendApi from '../instances/axios'
 
 export const useServerStatus = ( name ) => {

@@ -5,10 +5,10 @@
   "private": true,
   "scripts": {
     "predev": "node ./utilities/scripts/js/pre-dev.js",
-    "dev": "next dev",
+    "dev": "next dev ./src",
     "dev:go": "go run ./noxd.go",
-    "build": "next build && npm run go:build:server",
-    "start": "next start",
+    "build": "next build ./src && npm run go:build:server",
+    "start": "next start ./src",
     "go:build:server": "go build -o ./build/noxd ./noxd.go",
     "db:generate": "npx prisma generate",
     "db:migrate": "npx prisma migrate dev",

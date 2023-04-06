@@ -1,5 +1,5 @@
 import { PropTypes } from 'prop-types'
-import { daysOfTheWeek } from '../../../services/react/FreyrService'
+import { daysOfTheWeek } from '../../../services/FreyrService'
 import { capitalize } from 'lodash'
 
 const MealCardV3 = ({ day: weekday }) => {
@@ -11,8 +11,8 @@ const MealCardV3 = ({ day: weekday }) => {
     <div className={`card card-meal ${isToday ? 'today' : ''}`}>
       <h3 className='day-title'> {day} </h3>
       <div className='section-dinner'>
-        <div className='dinner-name'> {dinner.name} </div>
-        <sub> {capitalize( dinner.type )} </sub>
+        <div className='dinner-name'> {dinner?.name} </div>
+        <sub> {capitalize( dinner?.type )} </sub>
       </div>
     </div>
   )

@@ -1,12 +1,21 @@
-import { getNoxStatus } from '../../services/react/StatusService'
+// import { getNoxStatus } from '../../services/StatusService'
+import { getNoxStatus } from '../../services/StatusService'
+// import statusRed from '/public/images/status_red.png'
+// import statusBlue from '/public/images/status_blue.png'
+// import statusRed from '/images/status_red.jpg'
+// import statusBlue from '/images/status_blue.jpg'
 
 export const offlineState = {
+  // indicator: '/images/status_red.jpg',
   indicator: '/images/status_red.png',
+  // indicator: statusRed,
   status: 'offline',
 }
 
 const onlineState = {
+  // indicator: '/images/status_blue.jpg',
   indicator: '/images/status_blue.png',
+  // indicator: statusBlue,
   status: 'online',
 }
 

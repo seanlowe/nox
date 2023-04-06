@@ -1,11 +1,10 @@
 import { useContext, useEffect, useState } from 'react'
 import { Card, CircularProgress } from '@mui/material'
-import { imageSrc } from '../../../services/react/WeatherService'
-import StatusContext from '../../../utilities/contexts/StatusContext'
 import Offline from '../../layouts/Offline'
-import backendApi from '../../../utilities/instances/axios'
 import LoadingSpinner from '../../layouts/LoadingSpinner'
-import Image from 'next/image'
+import { imageSrc } from '../../../services/WeatherService'
+import StatusContext from '../../../utilities/contexts/StatusContext'
+import backendApi from '../../../utilities/instances/axios'
 
 const Weather = () => {
   const { state: { status: noxStatus } } = useContext( StatusContext )

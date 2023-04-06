@@ -1,4 +1,4 @@
-import backendApi from '../../utilities/instances/axios'
+import backendApi from '../utilities/instances/axios'
 import { convertCapitalizedObjectToLowercaseObject } from './helpers'
 
 export const daysOfTheWeek = [

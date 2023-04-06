@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheck, faXmark, faSpinner } from '@fortawesome/free-solid-svg-icons'
-import backendApi from '../../utilities/instances/axios'
+import backendApi from '../utilities/instances/axios'
+import Image from 'next/image'
 
 const SERVER_STATE = {
   ONLINE: 'Running',
@@ -30,9 +31,28 @@ export const formatServerState = ( state ) => {
 }
 
 export const formatNoxState = ( state ) => {
+  // return ( 
+  //   <>
+  //     {/* eslint-disable-next-line @next/next/no-img-element */}
+  //     <img src={state.indicator} className='status-nox-indicator' alt='' /> {state.status}
+  //   </>
+  // )
+
+  let statusImage = '/images/status_red.png'
+  if ( state.indicator ) {
+    statusImage = state.indicator
+  }
+
   return (
     <>
-      <img src={state.indicator} className='status-nox-indicator' /> {state.status}
+      <Image
+        src={statusImage}
+        className='status-nox-indicator'
+        alt=''
+        height={15}
+        width={25}
+      />
+      {state.status}
     </>
   )
 }
@@ -50,7 +70,6 @@ export const convertBackendServerToFrontendServer = ( server ) => {
 
   return formattedServer
 }
-
 
 export const getListOfServers = async () => {
   const { data } = await backendApi.get( '/status' )

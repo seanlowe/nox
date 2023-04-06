@@ -1,6 +1,6 @@
 import { useEffect, useReducer } from 'react'
-import StatusContext from '../utilities/contexts/StatusContext'
 import '../styles/global.scss'
+import StatusContext from '../utilities/contexts/StatusContext'
 import { initStatusReducer, statusReducer, offlineState } from '../utilities/reducers/statusReducer'
 
 // fix fontAwesome icon weirdness with next.js
