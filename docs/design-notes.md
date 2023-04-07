@@ -55,4 +55,6 @@ As of right now, here's a list of each module, what they do and where they get t
 |     ---    |     ---     |        ----          |
 | Anemoi | Provide weather updates based on user's current location | The `Anemoi` were lesser weather gods from Greek mythology, often depicted under the management of Aeolus, the keeper of the winds. |
 | Freyr | Choose and schedule a week's worth of dinner meals automatically | The name `Freyr` is a less common derivative of the name `Frey`, the Norse god of summer and the harvest. |
-| Moirai | Display the status of other associated processes | In Greek mythology, the `Moirai` were more commonly known as The `Fates`, a trio of otherworldly women who were incarnations of destiny. |
+| Moirai | Display the status of other associated processes | In Greek mythology, the `Moirai` were more commonly known as `The Fates`, a trio of otherworldly women who were incarnations of destiny. |
+
+<br />
