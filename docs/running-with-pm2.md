@@ -29,3 +29,5 @@ This will stop and remove the PM2 instance of the application, and then restart 
 **Note:** If changing the 'name' value of the application, one must remember to change the `eco:down` command in [package.json](/package.json) with the correct name so that it deletes the application instance properly.
 
 <br />
+
+**Note:** this is outdated. I will update this soon with up-to-date instructions on running PM2 with the separate Next.js frontend and Golang backend.
