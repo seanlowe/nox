@@ -11,6 +11,6 @@ createSchema({
   ],
   datasource: {
     provider: 'postgresql',
-    url: { env: 'DATABASE_URL' }
+    url: { env: 'DATABASE_URL_PRISMA' }
   },
 }).export( __dirname, 'schema' )

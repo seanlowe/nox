@@ -19,7 +19,7 @@ func init() {
 
   err := godotenv.Load("../.env")
 
-  DATABASE_URL := os.Getenv("DATABASE_URL_UPPER")
+  DATABASE_URL := os.Getenv("DATABASE_URL")
   connURL, err := postgresql.ParseURL(DATABASE_URL)
 	if err != nil {
 		log.Fatal("ParseURL: ", err)
