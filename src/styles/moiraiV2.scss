@@ -1,0 +1,98 @@
+/*
+ * holdover styling from V1
+ */
+
+.hass-green {
+  color: yellowgreen;
+}
+
+.hass-red {
+  color: red;
+}
+
+.hass-status {
+  position: relative;
+  top: -0.5rem;
+}
+
+.card-status {
+  background-color: $foreground-grey;
+  color: $text-default;
+  border-radius: 20px;
+  align-content: center;
+}
+
+.status-title {
+  text-align: center;
+  margin-bottom: -1.5rem;
+}
+
+/*
+ * new V2 styling
+ */
+
+.status-v2-grid-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-left: unset;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.status-v2-key-value-pair {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: inherit;
+  margin-bottom: 1rem;
+
+  label {
+    margin-right: 15px;
+    text-align: right;
+    width: 75px;
+  }
+
+  div {
+    width: auto;
+    margin: 0 auto;
+  }
+
+  // unset the position changes from statusModal V1
+  // this leaves V1 looking as intended while also fixing V2
+  .hass-status {
+    position: unset
+  }
+}
+
+.status-nox-indicator {
+  height: 15px;
+  width: 25px;
+  position: relative;
+  top: 0.2rem;
+}
+
+.MuiDialog-paper {
+  transition: unset;
+  margin: unset;
+  background-color: $foreground-grey;
+  color: $text-default;
+  border-radius: 20px;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.4);
+}
+
+.add-server-text {
+  color: $text-default
+}
+
+.status-content {
+  height: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add-server-btn {
+  margin-top: 20px;
+}

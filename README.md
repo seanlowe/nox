@@ -1,28 +1,36 @@
 <h1 align="center"> <b> NOX </b> </h1>
 
-<img align="right" alt="NOX Logo" src="public/images/nox.png" width="500" />
+<img align="right" alt="NOX Logo" src="assets/nox.png" width="500" />
 <div>
   My attempt at a low-level version of JARVIS.
   <br></br>
   Mostly something to tinker on in my free time using tools I find online, or languages I had an idea in or something I wanted to learn better.
   <br></br>
-  The end goal is to have a singular headless application with a separate web app UI that can control smart home devices, handle geolocation, schedule events, manage choosing a meal schedule for the week and anything else that strikes my fancy.
+  The end goal is to have a singular headless application with a separate web app UI that can control smart home devices, handle geolocation, schedule events, manage choosing a meal schedule for the week and/or anything else that strikes my fancy.
 </div>
 
-<br></br>
+<!-- <br></br> -->
+<hr></hr>
 
 ## Installation
 
-Prerequesites:
+Prerequisites:
 * node
+* golang
 * docker
+* [overmind](https://github.com/DarthSim/overmind)
 
 
 To install:
 ```bash
 $ git clone https://github.com/seanlowe/nox.git
 $ cd nox
+
+# install frontend
 $ npm install
+
+# install backend
+$ go install
 ```
 
 ## Setup
@@ -31,25 +39,36 @@ After installation has finished, you'll want to create your `.env` file. I have 
 ## Running nox
 To run nox (in dev mode) once you've set it up to your liking, run:
 ```bash
-$ npm run dev
-# this will:
-# - check to see if a new database needs creating or if we can start an existing one
-# - make sure the database is up to date by running any migrations and seeders necessary
-# - then start the Next.js dev server
+$ overmind start
 ```
+This will start two processes:
+1. `npm run dev`
+    - checks to see if a new database needs creating or if we can start an existing one
+    - makes sure the database is up to date by running any migrations and seeders necessary
+    - then starts the Next.js dev server
+2. `go run ./noxd.go`
+    - starts the Golang backend process
 
-It will be served at `localhost:3000/`
+The app will be served at `localhost:5100/`. You can quit the app by running `overmind q` or pressing `Ctrl+C` in the terminal where overmind is running.
 
 **Note:** Optionally, you can choose to create a persistent instance of nox using PM2. If that's something you'd like to do, see [running with PM2](./docs/running-with-pm2.md).
 
 
-## Prisma
-This project uses Prisma to control database structure. After making any change to the [schema.prisma](/prisma/schema.prisma) file, run:
+## Database
+This project uses [Prisma](https://www.prisma.io/) and [Schemix](https://github.com/ridafkih/schemix) to control database structure and [upper/db](https://github.com/upper/db) for database access from golang. 
+
+In order to make a lasting change on the database or update it with newly created models, run:
 ```bash
+# build schema.prisma file from all schemix files
+$ npm run db:mix
+
+# run any migrations
 $ npm run db:migrate
+
+# generate the prisma client
 $ npm run db:generate
 ```
-This updates the database with changes you've made to the schema, then generates a new Prisma Client for use in the project.
+This creates a schema.prisma file based on your models in `./prisma/models/`, updates the database with changes you've made to the schema, then generates a new Prisma Client for use in the project.
 
 To view your DB in the browser, run:
 ```bash
@@ -63,7 +82,8 @@ I had many different modules built out in JS/TS but none of them were connected 
 
 <hr></hr>
 
-Built on [Next.js](https://nextjs.org/) with [Prisma](https://www.prisma.io/). Runtime management via [PM2](https://pm2.keymetrics.io/).
+Built on [Next.js](https://nextjs.org/) with [Prisma](https://www.prisma.io/). Runtime management via [PM2](https://pm2.keymetrics.io/) and [overmind](https://github.com/DarthSim/overmind).
+
 <br></br>
 
 <!--
@@ -73,27 +93,27 @@ Built on [Next.js](https://nextjs.org/) with [Prisma](https://www.prisma.io/). R
 <div style="display: flex; justify-content: space-evenly; align-items: center; flex-wrap: wrap;">
   <!-- nodeJS  -->
   <a href="https://github.com/nodejs" target="blank">
-    <img alt="Node.js Logo" src="public/images/node.svg" width="200" />
+    <img alt="Node.js Logo" src="assets/node.svg" width="200" />
   </a>
 
   <!-- next.js -->
   <a href="https://github.com/vercel/next.js" target="blank">
-    <img alt="Next.js Logo" src="public/images/next.png" width="100" >
+    <img alt="Next.js Logo" src="assets/next.png" width="100" >
   </a>
 
   <!-- postgres -->
   <a href="https://github.com/postgres" target="blank">
-    <img alt="PostgreSQL Logo" src="public/images/postgres.png" width="100" >
+    <img alt="PostgreSQL Logo" src="assets/postgres.png" width="100" >
   </a>
 
   <!-- prisma -->
   <a href="https://github.com/prisma/" target="blank">
-    <img alt="Prisma Logo" src="https://images2.prisma.io/footer-logo.png" width="200" >
+    <img alt="Prisma Logo" src="assets/prisma.png" width="200" >
   </a>
 
   <!-- pm2 -->
-  <a href="https://pm2.keymetrics.io/" target="blank">
-    <img alt="PM2 logo" src="public/images/pm2.png" width="200">
+  <a href="https://github.com/Unitech/pm2" target="blank">
+    <img alt="PM2 logo" src="assets/pm2.png" width="200">
   </a>
 </div>
 

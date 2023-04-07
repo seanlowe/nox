@@ -1,0 +1,49 @@
+// area that holds the root button
+.MuiSpeedDial-root {
+  position: absolute;
+  top: 0;
+  left: 1.25rem;
+  transform: scale(0.9);
+}
+
+// root button itself
+.MuiSpeedDial-fab {
+  background: $background-grey;
+  background-color: $foreground-grey;
+  color: $text-default;
+  border-radius: 50%;
+  transition: .25s;
+}
+
+// adjust FontAwesomeIcon on the button
+.MuiSpeedDial-fab svg:first-of-type {
+  transform: scale(1.5);
+}
+
+.MuiSpeedDial-fab:hover {
+  box-shadow: 0 0 15px 10px $blue-glow;
+  transition: .25s;
+  background-color: $foreground-grey;
+  color: $blue-glow-hover;
+}
+
+// menu item label
+.MuiSpeedDialAction-staticTooltipLabel {
+  background: $foreground-grey;
+  color: $text-default;
+}
+
+// menu item
+.MuiSpeedDialAction-fab {
+  background: $background-grey;
+  background-color: $foreground-grey;
+  color: $text-default;
+  border-radius: 50%;
+}
+
+.MuiSpeedDialAction-fab:hover {
+  box-shadow: 0 0 15px 10px $blue-glow;
+  transition: .15s;
+  background-color: $foreground-grey;
+  color: $blue-glow-hover;
+}

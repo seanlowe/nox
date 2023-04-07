@@ -1,0 +1,81 @@
+@import 'swiper/scss';
+@import 'swiper/scss/pagination';
+@import 'swiper/scss/navigation';
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  margin-left: unset;
+  margin-right: unset;
+}
+
+.swiper-slide {
+  border-radius: 20px;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.swiper-pagination-bullet {
+  background: $text-default;
+  opacity: 50%;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: unset;
+}
+
+.swiper-button-prev {
+  color: $text-default;
+  transform: scale(0.65);
+  left: 0px;
+}
+
+.swiper-button-next {
+  color: $text-default;
+  transform: scale(0.65);
+  right: 0px;
+}
+
+.freyr {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.find-today {
+  position: relative;
+  bottom: 75px;
+  z-index: 2;
+}
+
+.card-meal {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: unset;
+
+  &.today {
+    background-color: grey;
+    color: #C3C3C6;
+  }
+}
+
+.day-title {
+  position: absolute;
+  top: 1rem;
+  border-bottom: 1px solid black;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.section-dinner {
+  text-align: center;
+
+  .dinner-name {
+    font-size: x-large;
+    font-weight: lighter;
+    margin-bottom: -0.25rem;
+    margin-top: -0.75rem;
+  }
+}
