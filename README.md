@@ -1,6 +1,6 @@
 <h1 align="center"> <b> NOX </b> </h1>
 
-<img align="right" alt="NOX Logo" src="public/images/nox.png" width="500" />
+<img align="right" alt="NOX Logo" src="assets/nox.png" width="500" />
 <div>
   My attempt at a low-level version of JARVIS.
   <br></br>
@@ -75,27 +75,27 @@ Built on [Next.js](https://nextjs.org/) with [Prisma](https://www.prisma.io/). R
 <div style="display: flex; justify-content: space-evenly; align-items: center; flex-wrap: wrap;">
   <!-- nodeJS  -->
   <a href="https://github.com/nodejs" target="blank">
-    <img alt="Node.js Logo" src="public/images/node.svg" width="200" />
+    <img alt="Node.js Logo" src="assets/node.svg" width="200" />
   </a>
 
   <!-- next.js -->
   <a href="https://github.com/vercel/next.js" target="blank">
-    <img alt="Next.js Logo" src="public/images/next.png" width="100" >
+    <img alt="Next.js Logo" src="assets/next.png" width="100" >
   </a>
 
   <!-- postgres -->
   <a href="https://github.com/postgres" target="blank">
-    <img alt="PostgreSQL Logo" src="public/images/postgres.png" width="100" >
+    <img alt="PostgreSQL Logo" src="assets/postgres.png" width="100" >
   </a>
 
   <!-- prisma -->
   <a href="https://github.com/prisma/" target="blank">
-    <img alt="Prisma Logo" src="https://images2.prisma.io/footer-logo.png" width="200" >
+    <img alt="Prisma Logo" src="assets/prisma.png" width="200" >
   </a>
 
   <!-- pm2 -->
-  <a href="https://pm2.keymetrics.io/" target="blank">
-    <img alt="PM2 logo" src="public/images/pm2.png" width="200">
+  <a href="https://github.com/Unitech/pm2" target="blank">
+    <img alt="PM2 logo" src="assets/pm2.png" width="200">
   </a>
 </div>
 
