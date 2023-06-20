@@ -18,20 +18,19 @@ Prerequisites:
 * node
 * golang
 * docker
+* [homebrew / linuxbrew](https://brew.sh/)
 * [overmind](https://github.com/DarthSim/overmind)
 
 
-To install:
+To install (all-in-one):
 ```bash
 $ git clone https://github.com/seanlowe/nox.git
 $ cd nox
 
-# install frontend
-$ npm install
-
-# install backend
-$ go install
+$ npm run installer
 ```
+
+You can also install things manually, if you so desire. Here's a [doc](./docs/manual-install) on that process. Also in that document are links to all of the prereq's for easy access.
 
 ## Setup
 After installation has finished, you'll want to create your `.env` file. I have included an `.env.example` with default values that you can change to your liking.
