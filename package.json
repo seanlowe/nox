@@ -22,7 +22,8 @@
     "eco:rebuild": "npm run eco:down && npm run eco:up",
     "eco:restart": "npx pm2 restart ecosystem.config.js",
     "eco:restart:dev": "npx pm2 restart ecosystem.config.js --env dev",
-    "eco:restart:prod": "npx pm2 restart ecosystem.config.js --env prod"
+    "eco:restart:prod": "npx pm2 restart ecosystem.config.js --env prod",
+    "installer": "bash ./utilities/sh/install.sh"
   },
   "dependencies": {
     "@emotion/react": "^11.10.6",
