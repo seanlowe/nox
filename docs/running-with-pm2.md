@@ -1,4 +1,4 @@
-## Running with PM2 **(optional)**
+## ~~Running with PM2 **(optional)**~~ OUTDATED
 
 
 ### Instance Management

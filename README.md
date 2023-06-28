@@ -9,7 +9,6 @@
   The end goal is to have a singular headless application with a separate web app UI that can control smart home devices, handle geolocation, schedule events, manage choosing a meal schedule for the week and/or anything else that strikes my fancy.
 </div>
 
-<!-- <br></br> -->
 <hr></hr>
 
 ## Installation
@@ -18,7 +17,6 @@ Prerequisites:
 * node
 * golang
 * docker
-* [homebrew / linuxbrew](https://brew.sh/)
 * [overmind](https://github.com/DarthSim/overmind)
 
 
@@ -27,10 +25,10 @@ To install (all-in-one):
 $ git clone https://github.com/seanlowe/nox.git
 $ cd nox
 
-$ npm run installer
+$ ./install.sh
 ```
 
-You can also install things manually, if you so desire. Here's a [doc](./docs/manual-install) on that process. Also in that document are links to all of the prereq's for easy access.
+You can also install things manually, if you so desire. Here's a [doc](./docs/manual-installation.md) on that process. Also in that document are links to all of the prereq's for easy access.
 
 ## Setup
 After installation has finished, you'll want to create your `.env` file. I have included an `.env.example` with default values that you can change to your liking.
@@ -50,7 +48,7 @@ This will start two processes:
 
 The app will be served at `localhost:5100/`. You can quit the app by running `overmind q` or pressing `Ctrl+C` in the terminal where overmind is running.
 
-**Note:** Optionally, you can choose to create a persistent instance of nox using PM2. If that's something you'd like to do, see [running with PM2](./docs/running-with-pm2.md).
+**Note:** ~~Optionally, you can choose to create a persistent instance of nox using PM2. If that's something you'd like to do, see [running with PM2](./docs/running-with-pm2.md)~~. This guide is outdated and needs updating. Please be patient.
 
 
 ## Database
