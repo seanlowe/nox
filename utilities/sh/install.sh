@@ -27,9 +27,11 @@ function validateInstall() {
   local dash=$2
 
   echo -en "$INSTALL_SEARCHING $program"
-  eval "$(${program} ${dash}version &> /dev/null)"
+  command="${program} ${dash}version &> /dev/null"
+  output=$(eval $command)
+  status=$?
 
-  if [[ $? -ne 0 ]] ; then
+  if [[ $status -ne 0 ]] ; then
     sleep .5
     echo -e "\r $INSTALL_MISSING"
     MISSING_COMPONENTS="$MISSING_COMPONENTS $program"
