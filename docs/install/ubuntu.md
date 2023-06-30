@@ -4,6 +4,7 @@ To manually install `nox` on an **Ubuntu** system, follow these instructions to 
 You can install node on Ubuntu by running the following command:
 ```bash
 $ snap install node --classic
+$ node --version
 ```
 
 ### golang
@@ -30,8 +31,7 @@ $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -
 $ sudo chmod a+r /etc/apt/keyrings/docker.gpg
 
 # set up the repository
-$  echo \
-  "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+$  echo "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
 # install docker
 $ sudo apt-get update
@@ -51,7 +51,8 @@ $ newgrp docker
 
 Now you can run docker to validate it's correctly installed:
 ```bash
-$ sudo docker run hello-world
+# if you did not log out / back in or run the `newgrp` command, prefix this with sudo
+$ docker run hello-world
 ```
 
 **Note**: there is also a GUI desktop app for docker if you need: [here](https://docs.docker.com/desktop/install/ubuntu/).
@@ -67,6 +68,7 @@ $ sudo mv $(go env GOPATH)/bin/overmind /usr/local/bin
 # or you can add your GOPATH/bin to your PATH, permanently
 $ echo "export PATH=$PATH:$(go env GOPATH)/bin" >> ~/.bashrc # or .zshrc, etc - insert your shell file of choice
 $ source ~/.bashrc # so that you can immediately use overmind without closing and reopening your shell
+$ overmind --version
 ```
 
 **Note**: at time of writing, v2 was the most recent release. It would be prudent to check the [official repository](https://github.com/DarthSim/overmind) to make sure information is accurate or for instructions on how to install overmind.
