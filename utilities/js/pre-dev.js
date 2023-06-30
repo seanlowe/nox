@@ -5,6 +5,8 @@ const { checkContainerStatus } = require( './helpers' )
 
 const status = checkContainerStatus()
 
+console.log( 'container status?', status )
+
 switch ( status ) {
 case 'running':
 case 'exists':
